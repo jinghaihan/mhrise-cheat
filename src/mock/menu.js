@@ -7,21 +7,21 @@ const menu = [
     children: []
   },
   {
-    title: '道具',
+    title: '道具箱',
     icon: 'shopping',
     target: 'item',
     activeRule: '/mhrise-cheat/',
     children: []
   },
   {
-    title: '护石',
+    title: '炼金术',
     icon: 'gift',
     target: 'talisman',
     activeRule: '/mhrise-cheat/',
     children: []
   },
   {
-    title: '随从',
+    title: '随从看板',
     icon: 'heart',
     target: 'buddy',
     activeRule: '',

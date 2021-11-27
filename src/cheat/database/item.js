@@ -913,6 +913,11 @@ const addItem = {
   'v3.0': []
 }
 
+const allItem = {
+  groupOfFile: 25,
+  countOfGroup: 15
+}
+
 const base = {
   'v3.6.1': '0DC276B8',
   'v3.5.0': '0DC08E18',
@@ -928,4 +933,4 @@ const slot = {
   step: 8
 }
 
-export { item, addItem, base, slot }
+export { item, addItem, allItem, base, slot }

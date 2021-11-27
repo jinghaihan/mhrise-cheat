@@ -66,7 +66,7 @@
           <a-button icon="rest" type="danger" @click="onClear" :disabled="!data.length">清空全部</a-button>
         </div>
         <div class="right-wrapper">
-          <a-button icon="sync" type="primary">全道具</a-button>
+          <a-button icon="sync" type="primary" @click="onAllItem">全道具</a-button>
         </div>
       </div>
       <div class="table-wrapper">
@@ -81,13 +81,20 @@
         </a-table>
       </div>
     </div>
+
+    <all-item-modal v-if="allItemVisible"
+                    :visible="allItemVisible"
+                    :version="versionOptions"
+                    @close="onModalClose"
+                    @submit="onDownloadAllItem"></all-item-modal>
   </div>
 </template>
 
 <script>
-import { item, addItem, base, slot } from '@/cheat/database/item.js'
+import { item, addItem, allItem, base, slot } from '@/cheat/database/item.js'
 import { generateCheat } from '@/cheat/template/item.js'
-import { downloadCheat } from '@/cheat/download.js'
+import { downloadCheat, downloadMultipleCheat } from '@/cheat/download.js'
+import allItemModal from './allItemModal'
 
 const columns = [
   {
@@ -134,6 +141,7 @@ const columns = [
 
 export default {
   name: 'item',
+  components: { allItemModal },
   data () {
     return {
       param: {
@@ -145,7 +153,8 @@ export default {
       versionOptions: [],
       itemOptions: [],
       data: [],
-      columns
+      columns,
+      allItemVisible: false
     }
   },
   created () {
@@ -166,7 +175,7 @@ export default {
       let code = ''
       let data = this.data.sort((a, b) => a.slot - b.slot)
       data.forEach(row => {
-        code += generateCheat(row.version, this.calculateSlot(row.slot), row.id, row.count)
+        code += generateCheat(row.version, this.calculateSlot(row.slot), row.id, row.count, true) + '\n\n'
       })
       downloadCheat(code, data[0].version)
     },
@@ -187,6 +196,40 @@ export default {
           self.data.splice(index, 1)
         }
       })
+    },
+    onAllItem () {
+      this.allItemVisible = true
+    },
+    async onDownloadAllItem (data) {
+      let illegalArr = this.findIllegalItem(data.version)
+      let items = this.itemOptions.filter(item => !illegalArr.includes(item.key))
+      let groupMap = {}
+      items.forEach((item, index) => {
+        let group = Math.floor(index / allItem.countOfGroup) + 1
+        if (!groupMap[group]) groupMap[group] = ''
+        groupMap[group] += generateCheat(data.version, this.calculateSlot(index + 1), item.key, data.count) + '\n'
+        
+        if ((index + 1) % allItem.countOfGroup === 0 || index === items.length - 1) {
+          let end = index + 1
+          let start = end - allItem.countOfGroup + 1
+          groupMap[group] = `[Box.${start}-${end}]\n${groupMap[group]}\n`
+        }
+      })
+      let fileMap = {}
+      Object.keys(groupMap).forEach((group, index) => {
+        let file = Math.floor(index / allItem.groupOfFile) + 1
+        if (!fileMap[file]) fileMap[file] = ''
+        fileMap[file] += groupMap[group]
+      })
+
+      let codes = []
+      Object.keys(fileMap).forEach(file => {
+        codes.push(fileMap[file])
+      })
+
+      await downloadMultipleCheat(codes, data.version)
+
+      this.onModalClose()
     },
     /** 工具 */
     handleVersion () {
@@ -220,6 +263,9 @@ export default {
         }
       })
       return flag
+    },
+    onModalClose () {
+      this.allItemVisible = false
     },
     validate (value) {
       if (value.id === '0000' && value.count !== 0) {
