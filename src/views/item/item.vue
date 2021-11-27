@@ -87,6 +87,7 @@
 <script>
 import { item, addItem, base, slot } from '@/cheat/database/item.js'
 import { generateCheat } from '@/cheat/template/item.js'
+import { downloadCheat } from '@/cheat/download.js'
 
 const columns = [
   {
@@ -167,7 +168,7 @@ export default {
       data.forEach(row => {
         code += generateCheat(row.version, this.calculateSlot(row.slot), row.id, row.count)
       })
-      console.log(code)
+      downloadCheat(code, data[0].version)
     },
     onClear () {
       let self = this
