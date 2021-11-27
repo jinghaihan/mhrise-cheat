@@ -146,9 +146,9 @@ export default {
     return {
       param: {
         version: undefined,
-        slot: undefined,
+        slot: 1,
         id: undefined,
-        count: undefined
+        count: 5000
       },
       versionOptions: [],
       itemOptions: [],
@@ -170,6 +170,9 @@ export default {
         ...this.param,
         name: item[this.param.id]
       })
+
+      this.param.slot++
+      this.param.id = undefined
     },
     onDownload () {
       let code = ''
@@ -332,22 +335,7 @@ export default {
 <style lang="less" scoped>
   .container{
     height: 100%;
-    .form-wrapper{
-      padding: 8px;
-      background: #fff;
-      ::v-deep.ant-form-item{
-        margin-bottom: 0;
-      }
-      .button{
-        ::v-deep.ant-form-item-control-wrapper{
-          width: 100%;
-        }
-      }
-    }
     .list-wrapper{
-      margin-top: 20px;
-      padding: 8px;
-      background: #fff;
       .option-wrapper{
         display: flex;
         justify-content: space-between;
@@ -356,9 +344,6 @@ export default {
           display: flex;
           justify-content: space-between;
         }
-      }
-      .table-wrapper{
-        margin-top: 20px;
       }
     }
   }

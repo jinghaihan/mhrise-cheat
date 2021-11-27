@@ -1,5 +1,6 @@
 <template>
   <div class="action-container">
+    <a-icon class="action-icon" type="coffee" title="请作者喝一杯咖啡"></a-icon>
     <a-icon class="action-icon" type="poweroff" title="退出登录" v-if="loginPage"></a-icon>
   </div>
 </template>
