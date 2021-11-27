@@ -13,8 +13,15 @@ import {
   Row,
   Col,
   Modal,
-  Select
+  Select,
+  InputNumber,
+  Table,
+  ConfigProvider,
+  message
 } from 'ant-design-vue'
+
+Vue.prototype.$message = message
+Vue.prototype.$confirm = Modal.confirm
 
 Vue.use(Layout)
 Vue.use(Icon)
@@ -29,3 +36,7 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Modal)
 Vue.use(Select)
+Vue.use(InputNumber)
+Vue.use(Table)
+Vue.use(ConfigProvider)
+Vue.use(message)

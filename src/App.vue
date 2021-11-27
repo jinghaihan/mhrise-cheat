@@ -1,10 +1,13 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+  <a-config-provider :locale="locale" :getPopupContainer="getPopupContainer">
+    <div id="app">
+      <router-view></router-view>
+    </div>
+  </a-config-provider>
 </template>
 
 <script>
+import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
 import config from '@/../package.json'
 import actions from '@/micro/actions'
 
@@ -12,6 +15,7 @@ export default {
   name: 'App',
   data () {
     return {
+      locale: zhCN,
       // 是否完成路由渲染
       flag: false,
       appName: config.name
@@ -52,6 +56,15 @@ export default {
         self.$store.commit('micro/SET_KEEPALIVE', keepAlive)
       }
     })
+  },
+  methods: {
+    getPopupContainer (el, dialogContext) {
+      if (dialogContext) {
+        return dialogContext.getDialogWrap()
+      } else {
+        return document.body
+      }
+    }
   }
 }
 </script>

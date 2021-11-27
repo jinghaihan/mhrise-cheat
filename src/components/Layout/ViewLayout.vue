@@ -35,7 +35,7 @@ export default {
     }
 
     return (
-      <div>
+      <div class="container">
         <keep-alive props={ props }>
           <router-view></router-view>
         </keep-alive>
@@ -46,5 +46,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+  .container{
+    height: 100%;
+    padding: 10px;
+  }
 </style>

@@ -62,7 +62,8 @@ let routes = {
 
 // 动态路由表
 const routerMap = {
-  'home': () => import('@/views/home/home.vue')
+  'home': () => import('@/views/home/home.vue'),
+  'item': () => import('@/views/item/item.vue')
 }
 // 动态路由处理
 export function generatorRouter (data) {
