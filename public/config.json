@@ -1,0 +1,21 @@
+{
+  "app": {
+    "development": {
+
+    },
+    "production": {
+
+    }
+  },
+  "api": {
+
+  },
+  "custom": {
+    "activeRule": [],
+    "systemName": "mhrise-cheat",
+    "copyright": "jinghaihan",
+    "menuLayout": "nav",
+    "menuTheme": "light",
+    "loginPage": false
+  }
+}

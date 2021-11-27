@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <script>
+      // 自启动时，加载自身配置
+      if(!window.__POWERED_BY_QIANKUN__){
+        let storage = window.sessionStorage
+        let data = storage.getItem('microConfig')
+        if(data){
+          // 如果storage存在配置则进行赋值
+          let config = JSON.parse(data)
+          initConfig(config)
+        }else{
+          // 如果不存在storage请求config文件
+          let url = '/config.json?' + Math.random()
+          fetch(url).then((response) => {
+            return response.json()
+          }).then((config) => {
+            storage.setItem('microConfig', JSON.stringify(config))
+            initConfig(config)
+          })
+        }
+        // 初始化微前端全局配置
+        function initConfig(data){
+          Object.keys(data).forEach(key => {
+            window[key] = data[key]
+          })
+        }
+      }
+    </script>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
