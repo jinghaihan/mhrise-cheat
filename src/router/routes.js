@@ -1,5 +1,3 @@
-import { ViewLayout } from '@comp/Layout'
-
 const defaultRoutes = [
   {
     path: '/login',

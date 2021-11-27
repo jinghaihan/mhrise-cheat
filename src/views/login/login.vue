@@ -3,7 +3,6 @@
     <div class="login">
       <div class="title">
         <img class="logo" :src="require('@/assets/logo.png')" />
-        <h1 class="name">{{name}}</h1>
       </div>
       <div class="form">
         <a-form :form="form" autocomplete="off">
@@ -154,7 +153,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #243B55, #141E30);
   }
   .login{
     width: 380px;
@@ -163,12 +161,9 @@ export default {
       align-items: center;
       justify-content: center;
       margin-bottom: 12px;
+      height: 100px;
       .logo{
-        height: 50px;
-        width: 50px;
-      }
-      .name{
-        color: #fff;
+        height: 100%;
       }
     }
     .form{
