@@ -51,7 +51,7 @@
                       {{opt.value}}
                     </a-select-option>
                 </a-select>
-                <a-input-number placeholder="lv."
+                <a-input-number placeholder="Lv."
                                 v-model="param.level1"
                                 :precision="0"
                                 :min="0"
@@ -74,7 +74,7 @@
                     {{opt.value}}
                   </a-select-option>
                 </a-select>
-              <a-input-number placeholder="lv."
+              <a-input-number placeholder="Lv."
                               v-model="param.level2"
                               :precision="0"
                               :min="0"
@@ -145,7 +145,10 @@ const columns = [
     ellipsis: true,
     sorter: false,
     align: 'center',
-    width: 100
+    width: 100,
+    customRender: (obj, rowData, index) => {
+      return talisman.type[rowData.type]
+    }
   },
   {
     title: '技能1',
@@ -155,7 +158,7 @@ const columns = [
     align: 'center',
     width: 120,
     customRender: (obj, rowData, index) => {
-      return rowData.skill1 + 'Lv.' + rowData.level1
+      return talisman.skill[rowData.skill1] + '(Lv.' + rowData.level1 + ')'
     }
   },
   {
@@ -166,7 +169,7 @@ const columns = [
     align: 'center',
     width: 120,
     customRender: (obj, rowData, index) => {
-      return rowData.skill2 + 'Lv.' + rowData.level2
+      return talisman.skill[rowData.skill2] + '(Lv.' + rowData.level2 + ')'
     }
   },
   {
@@ -217,6 +220,10 @@ export default {
   methods: {
     /** 业务 */
     onAdd () {
+      // 校验
+      if (!this.validate(this.param)) return
+
+      this.data.push({ ...this.param })
       // 自增box.No
       this.param.box++
     },
@@ -234,9 +241,10 @@ export default {
     },
     onDelete (row, index) {
       let self = this
-      let name = talisman.skill[row.skill1] + row.level1 + talisman.skill[row.skill2] + row.level2 + row.slot
+      let name = talisman.skill[row.skill1] + '(Lv.' + row.level1 + ') ' + talisman.skill[row.skill2] + '(Lv.' + row.level2 + ') ' + 'Slot.' + row.slot
       self.$confirm({
-        title: `确定删除${name}配置数据?`,
+        title: '确定删除配置数据?',
+        content: `${name}`,
         onOk () {
           self.data.splice(index, 1)
         }
@@ -260,7 +268,8 @@ export default {
       })
     },
     handleSkill () {
-      Object.keys(talisman.skill).forEach(id => {
+      let keys = Object.keys(talisman.skill).sort((a, b) => parseInt(a, 16) - parseInt(b, 16))
+      keys.forEach(id => {
         this.skillOptions.push({
           key: id,
           value: talisman.skill[id]
@@ -289,6 +298,44 @@ export default {
         }
       })
       return flag
+    },
+    validate (value) {
+      // スキル無し等级只允许为0
+      if ((value.skill1 === '00' && value.level1 !== 0) || (value.skill2 === '00' && value.level2 !== 0)) {
+        this.$message.error(`${talisman.skill['00']}等级只允许为0`)
+        return false
+      }
+      // 非スキル無し等级不允许为0
+      if (value.skill1 !== '00' && value.level1 === 0) {
+        this.$message.error(`${talisman.skill[value.skill1]}等级不允许为0`)
+        return false
+      }
+      if (value.skill2 !== '00' && value.level2 === 0) {
+        this.$message.error(`${talisman.skill[value.skill2]}等级不允许为0`)
+        return false
+      }
+      // 技能1与技能2不能相同
+      if (value.skill1 === value.skill2) {
+        this.$message.error(`技能1与技能2不能相同`)
+        return false
+      }
+      // 技能1为スキル無し技能2不允许为非スキル無し
+      if (value.skill1 === '00' && value.skill2 !== '00') {
+        this.$message.error(`技能1为${talisman.skill['00']}时，技能2也应为${talisman.skill['00']}`)
+        return false
+      }
+      // 校验当前配置中装备箱格子已经被使用
+      try {
+        this.data.forEach(row => {
+          if (row.box === value.box) {
+            throw new Error(`装备箱.No${value.box}已配置`)
+          }
+        })
+      } catch (error) {
+        this.$message.error(error.message)
+        return false
+      }
+      return true
     }
   }
 }

@@ -200,7 +200,8 @@ export default {
     onDelete (row, index) {
       let self = this
       self.$confirm({
-        title: `确定删除${item.list[row.id]}配置数据?`,
+        title: '确定删除配置数据?',
+        content: `${item.list[row.id]} x ${row.count}`,
         onOk () {
           self.data.splice(index, 1)
         }

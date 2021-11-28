@@ -7,21 +7,21 @@ const menu = [
     children: []
   },
   {
-    title: '道具',
+    title: '杂货店',
     icon: 'shopping',
     target: 'item',
     activeRule: '/mhrise-cheat/',
     children: []
   },
   {
-    title: '护石',
+    title: '神秘炼金',
     icon: 'gift',
     target: 'talisman',
     activeRule: '/mhrise-cheat/',
     children: []
   },
   {
-    title: '随从定制',
+    title: '随从看板',
     icon: 'heart',
     target: 'buddy',
     activeRule: '',
@@ -43,13 +43,13 @@ const menu = [
     ]
   },
   {
-    title: '狩猎记录',
+    title: '猎人笔记',
     icon: 'read',
     target: 'huntingLog',
     activeRule: '',
     children: [
       {
-        title: '狩猎数/捕获数',
+        title: '狩猎记录',
         icon: 'profile',
         target: 'count',
         activeRule: '/mhrise-cheat/',
@@ -95,6 +95,13 @@ const menu = [
         title: '勋章',
         icon: 'trophy',
         target: 'awards',
+        activeRule: '/mhrise-cheat/',
+        children: []
+      },
+      {
+        title: '斗技大会',
+        icon: 'schedule',
+        target: 'arenaRecords',
         activeRule: '/mhrise-cheat/',
         children: []
       }
