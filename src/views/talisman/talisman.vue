@@ -128,6 +128,8 @@
 
 <script>
 import talisman from '@/cheat/database/talisman.js'
+import generateCheat from '@/cheat/template/talisman.js'
+import { downloadCheat } from '@/cheat/utils/download.js'
 
 const columns = [
   {
@@ -228,7 +230,21 @@ export default {
       this.param.box++
     },
     onDownload () {
-
+      let code = ''
+      // 按照箱子编号升序排序
+      let data = this.data.sort((a, b) => a.box - b.box)
+      data.forEach(row => {
+        code += generateCheat(
+          row.version,
+          this.calculateBox(row.box),
+          row.type,
+          { skill: row.skill1, level: row.level1 },
+          { skill: row.skill2, level: row.level2 },
+          { name: row.slot, codes: talisman.slot[row.slot].split(',') },
+          true
+        )
+      })
+      downloadCheat(code, data[0].version)
     },
     onClear () {
       let self = this
@@ -300,8 +316,13 @@ export default {
       return flag
     },
     validate (value) {
+      // 技能1不允许为スキル無し
+      if (value.skill1 === '00') {
+        this.$message.error(`技能1不允许为${talisman.skill['00']}`)
+        return false
+      }
       // スキル無し等级只允许为0
-      if ((value.skill1 === '00' && value.level1 !== 0) || (value.skill2 === '00' && value.level2 !== 0)) {
+      if (value.skill2 === '00' && value.level2 !== 0) {
         this.$message.error(`${talisman.skill['00']}等级只允许为0`)
         return false
       }
@@ -319,11 +340,6 @@ export default {
         this.$message.error(`技能1与技能2不能相同`)
         return false
       }
-      // 技能1为スキル無し技能2不允许为非スキル無し
-      if (value.skill1 === '00' && value.skill2 !== '00') {
-        this.$message.error(`技能1为${talisman.skill['00']}时，技能2也应为${talisman.skill['00']}`)
-        return false
-      }
       // 校验当前配置中装备箱格子已经被使用
       try {
         this.data.forEach(row => {
@@ -336,6 +352,25 @@ export default {
         return false
       }
       return true
+    },
+    // 计算箱子16进制地址
+    calculateBox (box) {
+      let num = parseInt(talisman.box.start, 16)
+      let count = box - 1
+      for (let i = 0; i < count; i++) {
+        num += talisman.box.step
+      }
+      num = num.toString(16)
+      if (num.length < 4) {
+        let differ = 4 - num.length
+        let prefix = ''
+        for (let i = 0; i < differ; i++) {
+          prefix += '0'
+        }
+        num = prefix + num
+      }
+
+      return num
     }
   }
 }

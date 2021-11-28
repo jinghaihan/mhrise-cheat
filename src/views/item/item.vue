@@ -96,7 +96,7 @@
 <script>
 import item from '@/cheat/database/item.js'
 import generateCheat from '@/cheat/template/item.js'
-import { downloadCheat, downloadMultipleCheat } from '@/cheat/download.js'
+import { downloadCheat, downloadMultipleCheat } from '@/cheat/utils/download.js'
 import allModal from './allModal.vue'
 
 const columns = [
@@ -184,7 +184,7 @@ export default {
       // 按照箱子编号升序排序
       let data = this.data.sort((a, b) => a.box - b.box)
       data.forEach(row => {
-        code += generateCheat(row.version, this.calculateBox(row.box), row.id, row.count, true) + '\n\n'
+        code += generateCheat(row.version, this.calculateBox(row.box), row.id, row.count, true)
       })
       downloadCheat(code, data[0].version)
     },
@@ -220,12 +220,12 @@ export default {
       items.forEach((item, index) => {
         let group = Math.floor(index / exportSize.countOfGroup) + 1
         if (!groupMap[group]) groupMap[group] = ''
-        groupMap[group] += generateCheat(data.version, this.calculateBox(index + 1), item.key, data.count) + '\n'
+        groupMap[group] += generateCheat(data.version, this.calculateBox(index + 1), item.key, data.count)
         
         if ((index + 1) % exportSize.countOfGroup === 0 || index === items.length - 1) {
           let end = index + 1
           let start = end - exportSize.countOfGroup + 1
-          groupMap[group] = `[Box.${start}-${end}]\n${groupMap[group]}\n`
+          groupMap[group] = `\n[Box.${start}-${end}]\n${groupMap[group]}`
         }
       })
       // 拆分文件
