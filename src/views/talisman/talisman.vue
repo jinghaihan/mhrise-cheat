@@ -45,7 +45,7 @@
                           v-model="param.skill1"
                           show-search
                           :filter-option="filterOption"
-                          style="width: 80%"
+                          style="width: 75%"
                           allowClear>
                     <a-select-option v-for="opt in skillOptions" :key="opt.key" :value="opt.key">
                       {{opt.value}}
@@ -56,7 +56,7 @@
                                 :precision="0"
                                 :min="0"
                                 :max="4"
-                                style="width: 20%"
+                                style="width: 25%"
                                 allowClear></a-input-number>
               </a-input-group>
             </a-form-item>
@@ -68,7 +68,7 @@
                           v-model="param.skill2"
                           show-search
                           :filter-option="filterOption"
-                          style="width: 80%"
+                          style="width: 75%"
                           allowClear>
                   <a-select-option v-for="opt in skillOptions" :key="opt.key" :value="opt.key">
                     {{opt.value}}
@@ -79,7 +79,7 @@
                               :precision="0"
                               :min="0"
                               :max="4"
-                              style="width: 20%"
+                              style="width: 25%"
                               allowClear></a-input-number>
               </a-input-group>
             </a-form-item>
@@ -116,7 +116,7 @@
                   :columns="columns"
                   :row-key="(record, index) => index"
                   :pagination="false"
-                  :scroll="{ y: 400 }">
+                  :scroll="{ y: 360 }">
           <div slot="actions" slot-scope="record, index">
             <a-icon class="table-action" type="delete" title="删除" @click="onDelete(record, index)"></a-icon>
           </div>
@@ -198,12 +198,12 @@ export default {
       param: {
         version: undefined,
         box: 201,
-        type: undefined,
+        type: '06',
         skill1: undefined,
-        level1: undefined,
+        level1: 0,
         skill2: undefined,
-        level2: undefined,
-        slot: undefined
+        level2: 0,
+        slot: '3-1-1'
       },
       versionOptions: [],
       typeOptions: [],
@@ -274,6 +274,7 @@ export default {
           value: version
         })
       })
+      this.param.version = this.versionOptions[0].key
     },
     handleType () {
       Object.keys(talisman.type).forEach(id => {

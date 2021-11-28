@@ -77,7 +77,7 @@
                  :columns="columns"
                  :row-key="(record, index) => index"
                  :pagination="false"
-                  :scroll="{ y: 400 }">
+                 :scroll="{ y: 400 }">
           <div slot="actions" slot-scope="record, index">
             <a-icon class="table-action" type="delete" title="删除" @click="onDelete(record, index)"></a-icon>
           </div>
@@ -253,6 +253,7 @@ export default {
           value: version
         })
       })
+      this.param.version = this.versionOptions[0].key
     },
     hanldeItem () {
       Object.keys(item.list).forEach(id => {
