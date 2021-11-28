@@ -73,6 +73,45 @@
             </a-select>
           </a-form-item>
         </a-col>
+        <a-col :span="24">
+          <a-form-item label="技能6" class="required">
+            <a-select placeholder="请选择技能6"
+                      v-model="param.skill6"
+                      show-search
+                      :filter-option="filterOption"
+                      allowClear>
+              <a-select-option v-for="opt in skillOptions" :key="opt.key" :value="opt.key">
+                {{opt.value}}
+              </a-select-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="技能7" class="required">
+            <a-select placeholder="请选择技能7"
+                      v-model="param.skill7"
+                      show-search
+                      :filter-option="filterOption"
+                      allowClear>
+              <a-select-option v-for="opt in skillOptions" :key="opt.key" :value="opt.key">
+                {{opt.value}}
+              </a-select-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="技能8" class="required">
+            <a-select placeholder="请选择技能8"
+                      v-model="param.skill8"
+                      show-search
+                      :filter-option="filterOption"
+                      allowClear>
+              <a-select-option v-for="opt in skillOptions" :key="opt.key" :value="opt.key">
+                {{opt.value}}
+              </a-select-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
       </a-row>
     </a-form>
   </a-modal>
@@ -99,7 +138,10 @@ export default {
         skill2: undefined,
         skill3: undefined,
         skill4: undefined,
-        skill5: undefined
+        skill5: undefined,
+        skill6: undefined,
+        skill7: undefined,
+        skill8: undefined
       },
       skillOptions: []
     }

@@ -102,7 +102,7 @@
 
 <script>
 import buddy from '@/cheat/database/buddy.js'
-import { generateLevelCheat } from '@/cheat/template/buddy.js'
+import { generateLevelCheat, generateSkillCheat, generateMoveCheat } from '@/cheat/template/buddy.js'
 import skillModal from './skillModal.vue'
 import moveModal from './moveModal.vue'
 
@@ -237,11 +237,11 @@ export default {
         code += generateLevelCheat(row.version, row.type, this.calculateBox(row.box), row.level, true)
         // 生成随从技能金手指
         if (row.skills && row.skills.length) {
-
+          code += generateSkillCheat(row.version, row.type, this.calculateBox(row.box), row.skills, true)
         }
         // 生成支援技能金手指
         if (row.moves && row.moves.length) {
-
+          code += generateMoveCheat(row.version, row.type, this.calculateBox(row.box), row.moves, true)
         }
       })
       console.log(code)
