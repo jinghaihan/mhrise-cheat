@@ -59,10 +59,10 @@ export default {
       // color: #fff;
     }
     .nav-container{
-      width: calc(~"100% - 660px");
+      width: calc(~"100% - 460px");
     }
     .action-container{
-      width: 400px;
+      width: 200px;
     }
   }
 </style>

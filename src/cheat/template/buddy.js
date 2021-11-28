@@ -1,7 +1,25 @@
 
 import buddy from '@/cheat/database/buddy.js'
 
-export function generateLevelCheat (version, type, box, level, titled) {
+export default function generateCheat (version, type, box, level, skills, moves, titled) {
+  let template = ''
+  // 生成随从等级金手指
+  if (level) {
+    template += generateLevelCheat(version, type, box, level, true)
+  }
+  // 生成随从技能金手指
+  if (skills && skills.length) {
+    template += generateSkillCheat(version, type, box, skills, true)
+  }
+  // 生成支援行动金手指
+  if (moves && moves.length) {
+    template += generateMoveCheat(version, type, box, moves, true)
+  }
+
+  return template
+}
+
+function generateLevelCheat (version, type, box, level, titled) {
   // 动态生成等级金手指
   let template = `58020000 ${buddy.base[version]}
 58021000 000000B0
@@ -22,7 +40,7 @@ export function generateLevelCheat (version, type, box, level, titled) {
   return template
 }
 
-export function generateSkillCheat (version, type, box, skills, titled) {
+function generateSkillCheat (version, type, box, skills, titled) {
   // 动态生成随从技能金手指
   let template
   if (buddy.type[type] === '艾露猫') {
@@ -73,7 +91,7 @@ export function generateSkillCheat (version, type, box, skills, titled) {
   return template
 }
 
-export function generateMoveCheat (version, type, box, moves, titled) {
+function generateMoveCheat (version, type, box, moves, titled) {
   // 动态生成艾露吗支援行动金手指
   let template = `580F0000 ${buddy.base[version]}
 580F1000 000000B0

@@ -91,6 +91,13 @@ const menu = [
         children: []
       }
     ]
+  },
+  {
+    title: '其他',
+    icon: 'appstore',
+    target: 'other',
+    activeRule: '/mhrise-cheat/',
+    children: []
   }
 ]
 

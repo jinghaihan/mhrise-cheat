@@ -102,7 +102,8 @@
 
 <script>
 import buddy from '@/cheat/database/buddy.js'
-import { generateLevelCheat, generateSkillCheat, generateMoveCheat } from '@/cheat/template/buddy.js'
+import generatCheat from '@/cheat/template/buddy.js'
+import { downloadCheat } from '@/cheat/utils/download.js'
 import skillModal from './skillModal.vue'
 import moveModal from './moveModal.vue'
 
@@ -135,7 +136,7 @@ const columns = [
     align: 'center',
     width: 100,
     customRender: (obj, rowData, index) => {
-      return buddy.level[rowData.level]
+      return buddy.level[rowData.level] ? buddy.level[rowData.level] : '-'
     }
   },
   {
@@ -233,18 +234,9 @@ export default {
     onDownload () {
       let code = ''
       this.data.forEach(row => {
-        // 生成随从经验金手指
-        code += generateLevelCheat(row.version, row.type, this.calculateBox(row.box), row.level, true)
-        // 生成随从技能金手指
-        if (row.skills && row.skills.length) {
-          code += generateSkillCheat(row.version, row.type, this.calculateBox(row.box), row.skills, true)
-        }
-        // 生成支援技能金手指
-        if (row.moves && row.moves.length) {
-          code += generateMoveCheat(row.version, row.type, this.calculateBox(row.box), row.moves, true)
-        }
+        code += generatCheat(row.version, row.type, this.calculateBox(row.box), row.level, row.skills, row.moves, true)
       })
-      console.log(code)
+      downloadCheat(code, this.data[0].version)
     },
     onClear () {
       let self = this
@@ -322,7 +314,7 @@ export default {
       let flag = false
       // 表单未全部填写，添加按钮禁用
       Object.keys(this.param).forEach(key => {
-        if (!this.param[key] && this.param[key] !== 0) {
+        if (!this.param[key] && this.param[key] !== 0 && key !== 'level') {
           flag = true
         }
       })
