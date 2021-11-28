@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- 表单 -->
     <div class="form-wrapper">
       <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 14 }" autocomplete="off">
         <a-row :gutter="24">
@@ -102,13 +103,14 @@
         </a-row>
       </a-form>
     </div>
-
+    <!-- 展示 -->
     <div class="list-wrapper">
+      <!-- 操作 -->
       <div class="option-wrapper">
         <a-button icon="cloud-download" @click="onDownload" :disabled="!data.length">下载全部</a-button>
         <a-button icon="rest" type="danger" @click="onClear" :disabled="!data.length">清空全部</a-button>
       </div>
-
+      <!-- 表格 -->
       <div class="table-wrapper">
         <a-table :data-source="data"
                   :columns="columns"
@@ -125,7 +127,7 @@
 </template>
 
 <script>
-import { skill, type, slot, base } from '@/cheat/database/talisman.js'
+import talisman from '@/cheat/database/talisman.js'
 
 const columns = [
   {
@@ -215,7 +217,8 @@ export default {
   methods: {
     /** 业务 */
     onAdd () {
-
+      // 自增box.No
+      this.param.box++
     },
     onDownload () {
 
@@ -231,7 +234,7 @@ export default {
     },
     onDelete (row, index) {
       let self = this
-      let name = skill[row.skill1] + row.level1 + skill[row.skill2] + row.level2 + row.slot
+      let name = talisman.skill[row.skill1] + row.level1 + talisman.skill[row.skill2] + row.level2 + row.slot
       self.$confirm({
         title: `确定删除${name}配置数据?`,
         onOk () {
@@ -241,7 +244,7 @@ export default {
     },
     /** 工具 */
     handleVersion () {
-      Object.keys(base).forEach(version => {
+      Object.keys(talisman.base).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version
@@ -249,23 +252,23 @@ export default {
       })
     },
     handleType () {
-      Object.keys(type).forEach(id => {
+      Object.keys(talisman.type).forEach(id => {
         this.typeOptions.push({
           key: id,
-          value: type[id]
+          value: talisman.type[id]
         })
       })
     },
     handleSkill () {
-      Object.keys(skill).forEach(id => {
+      Object.keys(talisman.skill).forEach(id => {
         this.skillOptions.push({
           key: id,
-          value: skill[id]
+          value: talisman.skill[id]
         })
       })
     },
     handleSlot () {
-      Object.keys(slot).forEach(value => {
+      Object.keys(talisman.slot).forEach(value => {
         this.slotOptions.push({
           key: value,
           value: value
@@ -279,6 +282,7 @@ export default {
     },
     isAddDisabled () {
       let flag = false
+      // 表单未全部填写，添加按钮禁用
       Object.keys(this.param).forEach(key => {
         if (!this.param[key] && this.param[key] !== 0) {
           flag = true

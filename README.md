@@ -1,6 +1,6 @@
 # mhrise-cheat
 
-## 怪物猎人：崛起 金手指
+## 怪物猎人：崛起 金手指在线生成器
 
 ## Project setup
 ```

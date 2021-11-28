@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- 表单 -->
     <div class="form-wrapper">
       <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 14 }" autocomplete="off">
         <a-row :gutter="24">
@@ -18,7 +19,7 @@
           <a-col :xl="6" :lg="8" :sm="24">
             <a-form-item label="道具箱.No" >
               <a-input-number placeholder="请输入道具箱.No"
-                              v-model="param.slot"
+                              v-model="param.box"
                               :precision="0"
                               :min="1"
                               :max="2000"
@@ -58,17 +59,19 @@
         </a-row>
       </a-form>
     </div>
-
+    <!-- 展示 -->
     <div class="list-wrapper">
+      <!-- 操作 -->
       <div class="option-wrapper">
         <div class="left-wrapper">
           <a-button icon="cloud-download" @click="onDownload" :disabled="!data.length">下载全部</a-button>
           <a-button icon="rest" type="danger" @click="onClear" :disabled="!data.length">清空全部</a-button>
         </div>
         <div class="right-wrapper">
-          <a-button icon="sync" type="primary" @click="onAllItem">全道具</a-button>
+          <a-button icon="sync" type="primary" @click="onAll">全道具</a-button>
         </div>
       </div>
+      <!-- 表格 -->
       <div class="table-wrapper">
         <a-table :data-source="data"
                  :columns="columns"
@@ -81,20 +84,20 @@
         </a-table>
       </div>
     </div>
-
-    <all-item-modal v-if="allItemVisible"
-                    :visible="allItemVisible"
+    <!-- 组件 -->
+    <all-modal v-if="allVisible"
+                    :visible="allVisible"
                     :version="versionOptions"
                     @close="onModalClose"
-                    @submit="onDownloadAllItem"></all-item-modal>
+                    @submit="onDownloadAll"></all-modal>
   </div>
 </template>
 
 <script>
-import { item, addItem, allItem, base, slot } from '@/cheat/database/item.js'
-import { generateCheat } from '@/cheat/template/item.js'
+import item from '@/cheat/database/item.js'
+import generateCheat from '@/cheat/template/item.js'
 import { downloadCheat, downloadMultipleCheat } from '@/cheat/download.js'
-import allItemModal from './allItemModal'
+import allModal from './allModal.vue'
 
 const columns = [
   {
@@ -115,9 +118,9 @@ const columns = [
   },
   {
     title: '道具箱.No',
-    dataIndex: 'slot',
+    dataIndex: 'box',
     ellipsis: true,
-    sorter: (a, b) => a.slot - b.slot,
+    sorter: (a, b) => a.box - b.box,
     defaultSortOrder: 'ascend',
     align: 'center',
     width: 100
@@ -141,12 +144,12 @@ const columns = [
 
 export default {
   name: 'item',
-  components: { allItemModal },
+  components: { allModal },
   data () {
     return {
       param: {
         version: undefined,
-        slot: 1,
+        box: 1,
         id: undefined,
         count: 5000
       },
@@ -154,7 +157,7 @@ export default {
       itemOptions: [],
       data: [],
       columns,
-      allItemVisible: false
+      allVisible: false
     }
   },
   created () {
@@ -164,21 +167,24 @@ export default {
   methods: {
     /** 业务 */
     onAdd () {
+      // 校验
       if (!this.validate(this.param)) return
       
       this.data.push({
         ...this.param,
-        name: item[this.param.id]
+        name: item.list[this.param.id]
       })
-
-      this.param.slot++
+      // 自增box.No
+      this.param.box++
+      // 清空物品选择
       this.param.id = undefined
     },
     onDownload () {
       let code = ''
-      let data = this.data.sort((a, b) => a.slot - b.slot)
+      // 按照箱子编号升序排序
+      let data = this.data.sort((a, b) => a.box - b.box)
       data.forEach(row => {
-        code += generateCheat(row.version, this.calculateSlot(row.slot), row.id, row.count, true) + '\n\n'
+        code += generateCheat(row.version, this.calculateBox(row.box), row.id, row.count, true) + '\n\n'
       })
       downloadCheat(code, data[0].version)
     },
@@ -194,49 +200,53 @@ export default {
     onDelete (row, index) {
       let self = this
       self.$confirm({
-        title: `确定删除${item[row.id]}配置数据?`,
+        title: `确定删除${item.list[row.id]}配置数据?`,
         onOk () {
           self.data.splice(index, 1)
         }
       })
     },
-    onAllItem () {
-      this.allItemVisible = true
+    onAll () {
+      this.allVisible = true
     },
-    async onDownloadAllItem (data) {
+    async onDownloadAll (data) {
+      let { exportSize } = item
+      // 过滤获得选择版本全物品列表
       let illegalArr = this.findIllegalItem(data.version)
       let items = this.itemOptions.filter(item => !illegalArr.includes(item.key))
+      // 拆分分组
       let groupMap = {}
       items.forEach((item, index) => {
-        let group = Math.floor(index / allItem.countOfGroup) + 1
+        let group = Math.floor(index / exportSize.countOfGroup) + 1
         if (!groupMap[group]) groupMap[group] = ''
-        groupMap[group] += generateCheat(data.version, this.calculateSlot(index + 1), item.key, data.count) + '\n'
+        groupMap[group] += generateCheat(data.version, this.calculateBox(index + 1), item.key, data.count) + '\n'
         
-        if ((index + 1) % allItem.countOfGroup === 0 || index === items.length - 1) {
+        if ((index + 1) % exportSize.countOfGroup === 0 || index === items.length - 1) {
           let end = index + 1
-          let start = end - allItem.countOfGroup + 1
+          let start = end - exportSize.countOfGroup + 1
           groupMap[group] = `[Box.${start}-${end}]\n${groupMap[group]}\n`
         }
       })
+      // 拆分文件
       let fileMap = {}
       Object.keys(groupMap).forEach((group, index) => {
-        let file = Math.floor(index / allItem.groupOfFile) + 1
+        let file = Math.floor(index / exportSize.groupOfFile) + 1
         if (!fileMap[file]) fileMap[file] = ''
         fileMap[file] += groupMap[group]
       })
-
+      // 整理为数组
       let codes = []
       Object.keys(fileMap).forEach(file => {
         codes.push(fileMap[file])
       })
-
+      // 下载
       await downloadMultipleCheat(codes, data.version)
-
+      // 关闭配置弹窗
       this.onModalClose()
     },
     /** 工具 */
     handleVersion () {
-      Object.keys(base).forEach(version => {
+      Object.keys(item.base).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version
@@ -244,11 +254,11 @@ export default {
       })
     },
     hanldeItem () {
-      Object.keys(item).forEach(id => {
-        if (!item[id].includes('*')) {
+      Object.keys(item.list).forEach(id => {
+        if (!item.list[id].includes('*')) {
           this.itemOptions.push({
             key: id,
-            value: item[id]
+            value: item.list[id]
           })
         }
       })
@@ -260,6 +270,7 @@ export default {
     },
     isAddDisabled () {
       let flag = false
+      // 表单未全部填写，添加按钮禁用
       Object.keys(this.param).forEach(key => {
         if (!this.param[key] && this.param[key] !== 0) {
           flag = true
@@ -268,25 +279,28 @@ export default {
       return flag
     },
     onModalClose () {
-      this.allItemVisible = false
+      this.allVisible = false
     },
     validate (value) {
+      // 無し只允许为空
       if (value.id === '0000' && value.count !== 0) {
-        this.$message.error(`${item['0000']}数量只允许为0`)
+        this.$message.error(`${item.list['0000']}数量只允许为0`)
         return false
       }
+      // 校验版本是否存在所选道具
       let illegalArr = this.findIllegalItem(value.version)
       if (illegalArr.includes(value.id)) {
-        this.$message.error(`${value.version}不存在${item[value.id]}`)
+        this.$message.error(`${value.version}不存在${item.list[value.id]}`)
         return false
       }
+      // 校验当前配置中是否存在同种道具/道具箱格子已经被使用
       try {
         this.data.forEach(row => {
           if (row.id === value.id && value.id !== '0000') {
-            throw new Error(`道具箱已存在${item[value.id]}`)
+            throw new Error(`道具箱已存在${item.list[value.id]}`)
           }
-          if (row.slot === value.slot) {
-            throw new Error(`道具箱.No${value.slot}已配置`)
+          if (row.box === value.box) {
+            throw new Error(`道具箱.No${value.box}已配置`)
           }
         })
       } catch (error) {
@@ -295,8 +309,9 @@ export default {
       }
       return true
     },
+    // 获取当前版本非法道具列表
     findIllegalItem (version) {
-      let keys = Object.keys(addItem)
+      let keys = Object.keys(item.additionalList)
       let index
       for (let i = 0; i < keys.length; i++) {
         if (keys[i] === version) {
@@ -305,28 +320,29 @@ export default {
       }
       let illegalArr = []
       for (let i = 0; i < index; i++) {
-        illegalArr = illegalArr.concat(addItem[keys[i]])
+        illegalArr = illegalArr.concat(item.additionalList[keys[i]])
       }
 
       return illegalArr
     },
-    calculateSlot (box) {
-      let base = parseInt(slot.start, 16)
+    // 计算箱子16进制地址
+    calculateBox (box) {
+      let num = parseInt(item.box.start, 16)
       let count = box - 1
       for (let i = 0; i < count; i++) {
-        base += slot.step
+        num += item.box.step
       }
-      base = base.toString(16)
-      if (base.length < 4) {
-        let differ = 4 - base.length
+      num = num.toString(16)
+      if (num.length < 4) {
+        let differ = 4 - num.length
         let prefix = ''
         for (let i = 0; i < differ; i++) {
           prefix += '0'
         }
-        base = prefix + base
+        num = prefix + num
       }
 
-      return base
+      return num
     }
   }
 }
