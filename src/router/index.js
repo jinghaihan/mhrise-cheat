@@ -65,7 +65,8 @@ const routerMap = {
   'home': () => import('@/views/home/home.vue'),
   'item': () => import('@/views/item/item.vue'),
   'talisman': () => import('@/views/talisman/talisman.vue'),
-  'buddy': () => import('@/views/buddy/buddy.vue')
+  'buddy': () => import('@/views/buddy/buddy.vue'),
+  'huntingLog': () => import('@/views/guildCards/huntingLog/huntingLog.vue')
 }
 
 // 动态路由处理

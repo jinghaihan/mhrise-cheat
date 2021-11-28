@@ -28,51 +28,15 @@ const menu = [
     children: []
   },
   {
-    title: '猎人笔记',
-    icon: 'read',
-    target: 'huntingLog',
-    activeRule: '',
-    children: [
-      {
-        title: '狩猎记录',
-        icon: 'profile',
-        target: 'count',
-        activeRule: '/mhrise-cheat/',
-        children: []
-      },
-      {
-        title: '金冠',
-        icon: 'crown',
-        target: 'crowns',
-        activeRule: '/mhrise-cheat/',
-        children: []
-      }
-    ]
-  },
-  {
     title: '公会名片',
     icon: 'idcard',
     target: 'guildCards',
     activeRule: '',
     children: [
       {
-        title: '猎人等级',
-        icon: 'rise',
-        target: 'hunterRank',
-        activeRule: '/mhrise-cheat/',
-        children: []
-      },
-      {
-        title: '任务完成次数',
-        icon: 'number',
-        target: 'questCompleted',
-        activeRule: '/mhrise-cheat/',
-        children: []
-      },
-      {
-        title: '武器使用次数',
+        title: '统计信息',
         icon: 'bar-chart',
-        target: 'weaponUsage',
+        target: 'statistics',
         activeRule: '/mhrise-cheat/',
         children: []
       },
@@ -87,6 +51,13 @@ const menu = [
         title: '斗技大会',
         icon: 'schedule',
         target: 'arenaRecords',
+        activeRule: '/mhrise-cheat/',
+        children: []
+      },
+      {
+        title: '狩猎记录',
+        icon: 'crown',
+        target: 'huntingLog',
         activeRule: '/mhrise-cheat/',
         children: []
       }
