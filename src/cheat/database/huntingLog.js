@@ -10,6 +10,7 @@ const huntingLog = {
   },
   monster: [
     {
+      'index': 0,
       'id': 'B4',
       'name': '镰鼬龙王',
       'japaneseName': 'オサイズチ',
@@ -17,6 +18,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 1,
       'id': '64',
       'name': '眠狗龙王',
       'japaneseName': 'ドスバギィ',
@@ -24,6 +26,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 2,
       'id': 'C8',
       'name': '搔鸟',
       'japaneseName': 'クルルヤック',
@@ -31,6 +34,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 3,
       'id': '70',
       'name': '毒狗龙王',
       'japaneseName': 'ドスフロギィ',
@@ -38,6 +42,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 4,
       'id': '74',
       'name': '青熊兽',
       'japaneseName': 'アオアシラ',
@@ -45,6 +50,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 5,
       'id': '7C',
       'name': '白兔兽',
       'japaneseName': 'ウルクスス',
@@ -52,6 +58,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 6,
       'id': '80',
       'name': '赤甲兽',
       'japaneseName': 'ラングロトラ',
@@ -59,6 +66,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 7,
       'id': '98',
       'name': '伞鸟',
       'japaneseName': 'アケノシルム',
@@ -66,6 +74,7 @@ const huntingLog = {
       'miniatureCrown': '3F85D2F2'
     },
     {
+      'index': 8,
       'id': '60',
       'name': '水兽',
       'japaneseName': 'ロアルドロス',
@@ -73,6 +82,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 9,
       'id': '5C',
       'name': '土砂龙',
       'japaneseName': 'ボルボロス',
@@ -80,6 +90,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 10,
       'id': '30',
       'name': '奇怪龙',
       'japaneseName': 'フルフル',
@@ -87,6 +98,7 @@ const huntingLog = {
       'miniatureCrown': '3F91EB85'
     },
     {
+      'index': 11,
       'id': '9C',
       'name': '河童蛙',
       'japaneseName': 'ヨツミワドウ',
@@ -94,6 +106,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 12,
       'id': '94',
       'name': '天狗兽',
       'japaneseName': 'ビシュテンゴ',
@@ -101,6 +114,7 @@ const huntingLog = {
       'miniatureCrown': '3F91EB85'
     },
     {
+      'index': 13,
       'id': 'C4',
       'name': '毒妖鸟',
       'japaneseName': 'プケプケ',
@@ -108,6 +122,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 14,
       'id': 'CC',
       'name': '泥鱼龙',
       'japaneseName': 'ジュラトドス',
@@ -115,6 +130,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 15,
       'id': '34',
       'name': '岩龙',
       'japaneseName': 'バサルモス',
@@ -122,6 +138,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 16,
       'id': 'A0',
       'name': '人鱼龙',
       'japaneseName': 'イソネミクニ',
@@ -129,6 +146,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 17,
       'id': '20',
       'name': '雌火龙',
       'japaneseName': 'リオレイア',
@@ -136,6 +154,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 18,
       'id': '58',
       'name': '冰牙龙',
       'japaneseName': 'ベリオロス',
@@ -143,6 +162,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 19,
       'id': 'D0',
       'name': '飞雷龙',
       'japaneseName': 'トビカガチ',
@@ -150,6 +170,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 20,
       'id': '90',
       'name': '怨虎龙',
       'japaneseName': 'マガイマガド',
@@ -157,6 +178,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 21,
       'id': 'C0',
       'name': '蛮颚龙',
       'japaneseName': 'アンジャナフ',
@@ -164,6 +186,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 22,
       'id': '54',
       'name': '迅龙',
       'japaneseName': 'ルガクルガ',
@@ -171,6 +194,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 23,
       'id': '84',
       'name': '泡狐龙',
       'japaneseName': 'タマミツネ',
@@ -178,6 +202,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 24,
       'id': 'B0',
       'name': '雪鬼兽',
       'japaneseName': 'ゴシャハギ',
@@ -185,6 +210,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 25,
       'id': '28',
       'name': '火龙',
       'japaneseName': 'リオレウス',
@@ -192,6 +218,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 26,
       'id': 'A8',
       'name': '泥翁龙',
       'japaneseName': 'オロミドロ',
@@ -199,6 +226,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 27,
       'id': '68',
       'name': '雷狼龙',
       'japaneseName': 'ジンオウガ',
@@ -206,6 +234,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 28,
       'id': '50',
       'name': '轰龙',
       'japaneseName': 'ティガレックス',
@@ -213,6 +242,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 29,
       'id': '38',
       'name': '角龙',
       'japaneseName': 'ディアブロス',
@@ -220,6 +250,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 30,
       'id': 'A4',
       'name': '妃蜘蛛',
       'japaneseName': 'ヤツカダキ',
@@ -227,6 +258,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 31,
       'id': '44',
       'name': '钢龙',
       'japaneseName': 'クシャルダオラ',
@@ -234,6 +266,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 32,
       'id': '48',
       'name': '霞龙',
       'japaneseName': 'オオナズチ',
@@ -241,6 +274,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 33,
       'id': '4C',
       'name': '炎王龙',
       'japaneseName': 'テオ・テスカトル',
@@ -248,6 +282,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 34,
       'id': '40',
       'name': '金狮子',
       'japaneseName': 'ラージャン',
@@ -255,6 +290,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 35,
       'id': 'D4',
       'name': '爆鳞龙',
       'japaneseName': 'バゼルギウス',
@@ -262,21 +298,25 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 36,
       'id': 'AC',
       'name': '风神龙',
       'japaneseName': 'イブシマキヒコ'
     },
     {
+      'index': 37,
       'id': 'B8',
       'name': '雷神龙',
       'japaneseName': 'ナルハタタヒメ'
     },
     {
+      'index': 38,
       'id': 'BC',
       'name': '百龙渊源雷神龙',
       'japaneseName': '百竜ノ淵源ナルハタタヒメ'
     },
     {
+      'index': 39,
       'id': '8C',
       'name': '神秘红光天彗龙',
       'japaneseName': '奇しき赫耀のバルファルク',
@@ -284,6 +324,7 @@ const huntingLog = {
       'miniatureCrown': '3F95C28F'
     },
     {
+      'index': 40,
       'id': '78',
       'name': '霸主·青熊兽',
       'japaneseName': 'ヌシ・アオアシラ',
@@ -291,6 +332,7 @@ const huntingLog = {
       'miniatureCrown': '3F866666'
     },
     {
+      'index': 41,
       'id': '24',
       'name': '霸主·雌火龙',
       'japaneseName': 'ヌシ・リオレイア',
@@ -298,6 +340,7 @@ const huntingLog = {
       'miniatureCrown': '3F91EB85'
     },
     {
+      'index': 42,
       'id': '88',
       'name': '霸主·泡狐龙',
       'japaneseName': 'ヌシ・タマミツネ',
@@ -305,6 +348,7 @@ const huntingLog = {
       'miniatureCrown': '3F91EB85'
     },
     {
+      'index': 43,
       'id': '2C',
       'name': '霸主·火龙',
       'japaneseName': 'ヌシ・リオレウス',
@@ -312,6 +356,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 44,
       'id': '3C',
       'name': '霸主·角龙',
       'japaneseName': 'ヌシ・ディアブロス',
@@ -319,6 +364,7 @@ const huntingLog = {
       'miniatureCrown': '3F9D70A4'
     },
     {
+      'index': 45,
       'id': '6C',
       'name': '霸主·雷狼龙',
       'japaneseName': 'ヌシ・ジンオウガ',

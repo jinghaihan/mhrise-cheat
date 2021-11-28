@@ -312,7 +312,7 @@ export default {
     },
     isAddDisabled () {
       let flag = false
-      // 表单未全部填写，添加按钮禁用
+      // 允许不选择等级
       Object.keys(this.param).forEach(key => {
         if (!this.param[key] && this.param[key] !== 0 && key !== 'level') {
           flag = true
