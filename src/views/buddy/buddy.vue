@@ -77,7 +77,7 @@
               <a-icon type="question-circle" style="color: #1890ff" /> 支援行动
             </a-tooltip>
           </span>
-          <div slot="actions" slot-scope="record, index">
+          <div slot="actions" slot-scope="record, text, index">
             <a-icon class="table-action" type="fire" title="随从技能" v-if="isSkill(record)" @click="onSkill(record, index)"></a-icon>
             <a-icon class="table-action" type="thunderbolt" title="支援行动" v-if="isMove(record)" @click="onMove(record, index)"></a-icon>
             <a-icon class="table-action" type="delete" title="删除" @click="onDelete(record, index)"></a-icon>
@@ -85,11 +85,26 @@
         </a-table>
       </div>
     </div>
+    <!-- 组件 -->
+    <skill-modal v-if="skillVisible"
+                 :visible="skillVisible"
+                 :data="currentRow"
+                 @close="onModalClose"
+                 @submit="onSkillSubmit"></skill-modal>
+
+    <move-modal v-if="moveVisible"
+                :visible="moveVisible"
+                :data="currentRow"
+                @close="onModalClose"
+                @submit="onMoveSubmit"></move-modal>
   </div>
 </template>
 
 <script>
 import buddy from '@/cheat/database/buddy.js'
+import { generateLevelCheat } from '@/cheat/template/buddy.js'
+import skillModal from './skillModal.vue'
+import moveModal from './moveModal.vue'
 
 const columns = [
   {
@@ -129,11 +144,13 @@ const columns = [
     ellipsis: true,
     sorter: false,
     align: 'center',
-    width: 100,
+    width: 180,
     customRender: (obj, rowData, index) => {
       let string = ''
       if (rowData.skills && rowData.skills.length) {
-        string = rowData.skills.split(',')
+        string = rowData.skills.map(skill => {
+          return buddy.skill[skill]
+        }).join(',')
       } else {
         string = '-'
       }
@@ -146,7 +163,7 @@ const columns = [
     ellipsis: true,
     sorter: false,
     align: 'center',
-    width: 100,
+    width: 180,
     slots: { title: 'customTitle' },
     customRender: (obj, rowData, index) => {
       let string = ''
@@ -154,7 +171,9 @@ const columns = [
         string = '-'
       } else {
         if (rowData.moves && rowData.moves.length) {
-          string = rowData.moves.split(',')
+          string = rowData.moves.map(move => {
+            return buddy.move[move]
+          }).join(',')
         } else {
           string = '-'
         }
@@ -173,6 +192,7 @@ const columns = [
 
 export default {
   name: 'buddy',
+  components: { skillModal, moveModal },
   data () {
     return {
       param: {
@@ -185,7 +205,10 @@ export default {
       typeOptions: [],
       levelOptions: [],
       data: [],
-      columns
+      columns,
+      skillVisible: false,
+      moveVisible: false,
+      currentRow: {}
     }
   },
   created () {
@@ -199,10 +222,29 @@ export default {
       // 校验
       if (!this.validate(this.param)) return
 
-      this.data.push({ ...this.param })
+      this.data.push({
+        skills: [],
+        moves: [],
+        ...this.param
+      })
+      // 按照栏位编号升序排序, 排序同栏位，艾露猫靠前
+      this.data = this.data.sort((a, b) => this.sortList(a, b))
     },
     onDownload () {
-      
+      let code = ''
+      this.data.forEach(row => {
+        // 生成随从经验金手指
+        code += generateLevelCheat(row.version, row.type, this.calculateBox(row.box), row.level, true)
+        // 生成随从技能金手指
+        if (row.skills && row.skills.length) {
+
+        }
+        // 生成支援技能金手指
+        if (row.moves && row.moves.length) {
+
+        }
+      })
+      console.log(code)
     },
     onClear () {
       let self = this
@@ -214,10 +256,30 @@ export default {
       })
     },
     onSkill (row, index) {
-
+      this.currentRow = {
+        index: index,
+        data: _.cloneDeep(row)
+      }
+      this.skillVisible = true
+    },
+    onSkillSubmit (data) {
+      this.data[this.currentRow.index].skills = Object.keys(data).map(skill => {
+        return data[skill]
+      })
+      this.onModalClose()
     },
     onMove (row, index) {
-
+      this.currentRow = {
+        index: index,
+        data: _.cloneDeep(row)
+      }
+      this.moveVisible = true
+    },
+    onMoveSubmit (data) {
+      this.data[this.currentRow.index].moves = Object.keys(data).map(move => {
+        return data[move]
+      })
+      this.onModalClose()
     },
     onDelete (row, index) {
       let self = this
@@ -266,6 +328,11 @@ export default {
       })
       return flag
     },
+    onModalClose () {
+      this.currentRow = {}
+      this.skillVisible = false
+      this.moveVisible = false
+    },
     isSkill (row) {
       return true
     },
@@ -274,6 +341,13 @@ export default {
         return true
       }
       return false
+    },
+    sortList (a, b) {
+      if (a.box === b.box) {
+        return parseInt(a.type, 16) - parseInt(b.type, 16)
+      } else {
+        return a.box - b.box
+      }
     },
     validate (value) {
       // 校验栏位格子是否已经被使用
@@ -288,6 +362,17 @@ export default {
         return false
       }
       return true
+    },
+    // 计算栏位16进制地址
+    calculateBox (box) {
+      let num = parseInt(buddy.box.start, 16)
+      let count = box - 1
+      for (let i = 0; i < count; i++) {
+        num += buddy.box.step
+      }
+      num = num.toString(16)
+
+      return num
     }
   }
 }

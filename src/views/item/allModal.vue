@@ -9,7 +9,7 @@
     <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 14 }" autocomplete="off">
       <a-row :gutter="24">
         <a-col :span="24">
-          <a-form-item label="游戏版本">
+          <a-form-item label="游戏版本" class="required">
             <a-select placeholder="请选择游戏版本"
                       v-model="param.version"
                       allowClear>
@@ -20,7 +20,7 @@
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="数量">
+          <a-form-item label="数量" class="required">
             <a-input-number placeholder="请输入数量"
                               v-model="param.count"
                               :precision="0"
@@ -50,7 +50,7 @@ export default {
   data () {
     return {
       param: {
-        version: undefined
+        version: this.version[0].key
       }
     }
   },

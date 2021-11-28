@@ -117,7 +117,7 @@
                   :row-key="(record, index) => index"
                   :pagination="false"
                   :scroll="{ y: 360 }">
-          <div slot="actions" slot-scope="record, index">
+          <div slot="actions" slot-scope="record, text, index">
             <a-icon class="table-action" type="delete" title="删除" @click="onDelete(record, index)"></a-icon>
           </div>
         </a-table>
@@ -226,14 +226,15 @@ export default {
       if (!this.validate(this.param)) return
 
       this.data.push({ ...this.param })
+      // 按照箱子编号升序排序
+      this.data = this.data.sort((a, b) => a.box - b.box)
+
       // 自增box.No
       this.param.box++
     },
     onDownload () {
       let code = ''
-      // 按照箱子编号升序排序
-      let data = this.data.sort((a, b) => a.box - b.box)
-      data.forEach(row => {
+      this.data.forEach(row => {
         code += generateCheat(
           row.version,
           this.calculateBox(row.box),
@@ -244,7 +245,7 @@ export default {
           true
         )
       })
-      downloadCheat(code, data[0].version)
+      downloadCheat(code, this.data[0].version)
     },
     onClear () {
       let self = this

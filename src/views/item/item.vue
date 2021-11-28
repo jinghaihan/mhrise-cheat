@@ -78,7 +78,7 @@
                  :row-key="(record, index) => index"
                  :pagination="false"
                  :scroll="{ y: 400 }">
-          <div slot="actions" slot-scope="record, index">
+          <div slot="actions" slot-scope="record, text, index">
             <a-icon class="table-action" type="delete" title="删除" @click="onDelete(record, index)"></a-icon>
           </div>
         </a-table>
@@ -174,6 +174,9 @@ export default {
         ...this.param,
         name: item.list[this.param.id]
       })
+      // 按照箱子编号升序排序
+      this.data = this.data.sort((a, b) => a.box - b.box)
+
       // 自增box.No
       this.param.box++
       // 清空物品选择
@@ -181,12 +184,10 @@ export default {
     },
     onDownload () {
       let code = ''
-      // 按照箱子编号升序排序
-      let data = this.data.sort((a, b) => a.box - b.box)
-      data.forEach(row => {
+      this.data.forEach(row => {
         code += generateCheat(row.version, this.calculateBox(row.box), row.id, row.count, true)
       })
-      downloadCheat(code, data[0].version)
+      downloadCheat(code, this.data[0].version)
     },
     onClear () {
       let self = this
@@ -256,7 +257,8 @@ export default {
       this.param.version = this.versionOptions[0].key
     },
     hanldeItem () {
-      Object.keys(item.list).forEach(id => {
+      let keys = Object.keys(item.list).sort((a, b) => parseInt(a, 16) - parseInt(b, 16))
+      keys.forEach(id => {
         if (!item.list[id].includes('*')) {
           this.itemOptions.push({
             key: id,
