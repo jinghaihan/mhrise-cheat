@@ -28,8 +28,8 @@
             </a-form-item>
           </a-col>
           <a-col :xl="6" :lg="8" :sm="24">
-            <a-form-item label="种类">
-              <a-select placeholder="请选择种类"
+            <a-form-item label="类型">
+              <a-select placeholder="请选择类型"
                         v-model="param.type"
                         allowClear>
                 <a-select-option v-for="opt in typeOptions" :key="opt.key" :value="opt.key">
@@ -142,7 +142,7 @@ const columns = [
     width: 100
   },
   {
-    title: '种类',
+    title: '类型',
     dataIndex: 'type',
     ellipsis: true,
     sorter: false,
@@ -341,7 +341,7 @@ export default {
         this.$message.error(`技能1与技能2不能相同`)
         return false
       }
-      // 校验当前配置中装备箱格子已经被使用
+      // 校验装备箱格子是否已经被使用
       try {
         this.data.forEach(row => {
           if (row.box === value.box) {

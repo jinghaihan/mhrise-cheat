@@ -17,7 +17,8 @@ import {
   InputNumber,
   Table,
   ConfigProvider,
-  message
+  message,
+  Tooltip
 } from 'ant-design-vue'
 
 Vue.prototype.$message = message
@@ -40,3 +41,4 @@ Vue.use(InputNumber)
 Vue.use(Table)
 Vue.use(ConfigProvider)
 Vue.use(message)
+Vue.use(Tooltip)

@@ -64,8 +64,10 @@ let routes = {
 const routerMap = {
   'home': () => import('@/views/home/home.vue'),
   'item': () => import('@/views/item/item.vue'),
-  'talisman': () => import('@/views/talisman/talisman.vue')
+  'talisman': () => import('@/views/talisman/talisman.vue'),
+  'buddy': () => import('@/views/buddy/buddy.vue')
 }
+
 // 动态路由处理
 export function generatorRouter (data) {
   return new Promise((resolve, reject) => {

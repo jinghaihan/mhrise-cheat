@@ -22,25 +22,10 @@ const menu = [
   },
   {
     title: '随从看板',
-    icon: 'heart',
+    icon: 'bell',
     target: 'buddy',
-    activeRule: '',
-    children: [
-      {
-        title: '等级',
-        icon: 'fire',
-        target: 'level',
-        activeRule: '/mhrise-cheat/',
-        children: []
-      },
-      {
-        title: '技能',
-        icon: 'thunderbolt',
-        target: 'skills',
-        activeRule: '/mhrise-cheat/',
-        children: []
-      }
-    ]
+    activeRule: '/mhrise-cheat/',
+    children: []
   },
   {
     title: '猎人笔记',
