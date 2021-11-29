@@ -19,7 +19,9 @@ import {
   ConfigProvider,
   message,
   Tooltip,
-  Card
+  Card,
+  Checkbox,
+  Divider
 } from 'ant-design-vue'
 
 Vue.prototype.$message = message
@@ -44,3 +46,5 @@ Vue.use(ConfigProvider)
 Vue.use(message)
 Vue.use(Tooltip)
 Vue.use(Card)
+Vue.use(Checkbox)
+Vue.use(Divider)
