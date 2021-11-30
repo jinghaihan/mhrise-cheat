@@ -59,24 +59,34 @@
         <a-col :xxl="2" :xl="3" :lg="4" :md="6" :sm="8" v-for="(item, index) in data" :key="index">
           <a-card class="monster-card" hoverable>
             <img slot="cover" :src="renderImage(item.id)" class="image">
-            <a-card-meta :title="item.name">
-              <template slot="description">
-                <div class="description" :title="item.japaneseName">{{item.japaneseName}}</div>
-              </template>
+            <a-card-meta>
+              <div slot="title" class="title" :title="item.name">
+                <a-icon theme="filled"
+                        :type="item.status === 'edited' ? 'check-circle' : 'minus-circle'"
+                        :class="item.status === 'edited' ? 'edited status-icon' : 'unedited status-icon'">
+                </a-icon>
+                {{item.name}}
+              </div>
             </a-card-meta>
             <template slot="actions" class="ant-card-actions">
-              <a-icon type="edit" />
+              <a-icon type="edit" @click="onEdit(item, index)"/>
               <a-icon type="delete" @click="onDelete(item, index)"/>
             </template>
           </a-card>
         </a-col>
       </a-row>
     </div>
-    </div>
+    <edit-modal v-if="editVisible"
+                :visible="editVisible"
+                :data="currentData"
+                @submit="onEditSubmit"
+                @close="onModalClose"></edit-modal>
+  </div>
 </template>
 
 <script>
 import huntingLog from '@/cheat/database/huntingLog.js'
+import editModal from './editModal.vue'
 
 export default {
   name: 'huntingLog',
@@ -84,7 +94,8 @@ export default {
     VNodes: {
       functional: true,
       render: (h, ctx) => ctx.props.vnodes
-    }
+    },
+    editModal
   },
   data () {
     return {
@@ -95,7 +106,9 @@ export default {
       versionOptions: [],
       monsterOptions: [],
       data: [],
-      selectAll: false
+      selectAll: false,
+      editVisible: false,
+      currentData: {}
     }
   },
   created () {
@@ -119,6 +132,13 @@ export default {
         return {
           ...this.param,
           ...this.monsterOptions.filter(item => item.id === id)[0],
+          param: {
+            longest: undefined,
+            shortest: undefined,
+            hunted: undefined,
+            captured: undefined
+          },
+          status: 'unedited',
           ...this.data.filter(item => item.id === id)[0]
         }
       })
@@ -159,11 +179,33 @@ export default {
         }
       })
     },
-    onDelete (row, index) {
+    onEdit (data, index) {
+      this.currentData = {
+        index: index,
+        data: _.cloneDeep(data)
+      }
+      this.editVisible = true
+    },
+    onEditSubmit (data) {
+      let flag = false
+      Object.keys(data).forEach(key => {
+        this.data[this.currentData.index].param[key] = data[key]
+        if (data[key] || data[key] === 0) {
+          flag = true
+          this.data[this.currentData.index].status = 'edited'
+        }
+        return data[key]
+      })
+      if (!flag) {
+        this.data[this.currentData.index].status = 'unedited'
+      }
+      this.onModalClose()
+    },
+    onDelete (data, index) {
       let self = this
       self.$confirm({
         title: '确定删除配置数据?',
-        content: `${row.name} x ${row.japaneseName}`,
+        content: `${data.name} x ${data.japaneseName}`,
         onOk () {
           self.data.splice(index, 1)
         }
@@ -204,6 +246,10 @@ export default {
       })
       return flag
     },
+    onModalClose () {
+      this.currentData = {}
+      this.editVisible = false
+    },
     filterOption (input, option) {
       return (
         option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -213,7 +259,7 @@ export default {
       const context = require.context('@/assets/monster/', true, /\.png$/)
       const imgName = `./${name}.png`
       const src = context(imgName)
-      // return ''
+      
       return src
     },
     calculateImageWidth () {
@@ -248,14 +294,28 @@ export default {
         height: 100%;
         overflow-y: auto;
         .monster-card{
+          ::v-deep.ant-card-body{
+            padding: 0;
+          }
           .image{
             width: 100%;
             height: 0;
           }
-          .description{
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+          .title{
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .status-icon{
+              font-size: 12px;
+              margin-right: 4px;
+            }
+            .edited{
+              color: #52c41a;
+            }
+            .unedited{
+              color: rgba(0, 0, 0, 0.25);
+            }
           }
         }
       }

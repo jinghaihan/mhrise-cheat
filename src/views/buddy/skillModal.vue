@@ -4,6 +4,7 @@
     @cancel="closeModal"
     @ok="onSubmit"
     :width="600"
+    :maskClosable="false"
     title="随从技能"
   >
     <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 14 }" autocomplete="off">

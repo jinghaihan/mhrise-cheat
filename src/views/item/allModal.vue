@@ -4,6 +4,7 @@
     @cancel="closeModal"
     @ok="onSubmit"
     :width="400"
+    :maskClosable="false"
     title="全道具"
   >
     <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 14 }" autocomplete="off">

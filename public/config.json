@@ -16,6 +16,6 @@
     "copyright": "jinghaihan",
     "menuLayout": "nav",
     "menuTheme": "light",
-    "loginPage": false
+    "loginPage": true
   }
 }

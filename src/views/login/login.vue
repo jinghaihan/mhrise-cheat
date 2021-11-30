@@ -153,6 +153,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to right, #243B55, #141E30);
   }
   .login{
     width: 380px;
