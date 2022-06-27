@@ -1,0 +1,70 @@
+// @import '~ant-design-vue/dist/antd.less';
+// @import '~ant-design-vue/es/style/themes/default.less';
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form-wrapper{
+  padding: 8px;
+  background: #fff;
+  .ant-form-item{
+    margin-bottom: 0;
+  }
+  .button{
+    .ant-form-item-control-wrapper{
+      width: 100%;
+    }
+  }
+}
+
+.list-wrapper{
+  margin-top: 20px;
+  padding: 8px;
+  background: #fff;
+  .table-wrapper{
+    margin-top: 20px;
+  }
+}
+
+.table-action{
+  color: #1890ff;
+  cursor: pointer;
+  margin: 0 6px;
+}
+
+.required .ant-form-item-label > label::before {
+  display: inline-block;
+  margin-right: 4px;
+  color: #f5222d;
+  font-size: 14px;
+  font-family: SimSun, sans-serif;
+  line-height: 1;
+  content: '*';
+}
+
+.select-multiple-menu{
+  .all{
+    margin-left: 8px;
+  }
+  .divider{
+    margin: 4px 0;
+  }
+}

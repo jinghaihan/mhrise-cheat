@@ -1,0 +1,59 @@
+[
+  {
+    "title": "首页",
+    "icon": "home",
+    "target": "home",
+    "activeRule": "/mhrise-cheat/",
+    "children": []
+  },
+  {
+    "title": "杂货店",
+    "icon": "shopping",
+    "target": "item",
+    "activeRule": "/mhrise-cheat/",
+    "children": []
+  },
+  {
+    "title": "神秘炼金",
+    "icon": "gift",
+    "target": "talisman",
+    "activeRule": "/mhrise-cheat/",
+    "children": []
+  },
+  {
+    "title": "随从看板",
+    "icon": "bell",
+    "target": "buddy",
+    "activeRule": "/mhrise-cheat/",
+    "children": []
+  },
+  {
+    "title": "公会名片",
+    "icon": "idcard",
+    "target": "card",
+    "activeRule": "",
+    "children": [
+      {
+        "title": "统计信息",
+        "icon": "bar-chart",
+        "target": "stats",
+        "activeRule": "/mhrise-cheat/",
+        "children": []
+      },
+      {
+        "title": "勋章",
+        "icon": "trophy",
+        "target": "awards",
+        "activeRule": "/mhrise-cheat/",
+        "children": []
+      },
+      {
+        "title": "狩猎记录",
+        "icon": "crown",
+        "target": "monster",
+        "activeRule": "/mhrise-cheat/",
+        "children": []
+      }
+    ]
+  }
+]
