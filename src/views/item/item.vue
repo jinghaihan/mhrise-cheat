@@ -308,6 +308,7 @@ export default {
           })
         }
       })
+      console.log(this.itemOptions, this.itemOptions.length)
     },
     filterOption (input, option) {
       return (

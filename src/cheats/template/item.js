@@ -9,8 +9,8 @@ export function generateItemCheat (params) {
   let title
   let template = generateCheatTemplate([
     `580F0000 ${address.item[version]}`,
-    `580F1000 00000078`,
-    `580F1000 00000018`,
+    `580F1000 000000${item.pointer[version][0]}`,
+    `580F1000 000000${item.pointer[version][1]}`,
     `580F1000 00000010`,
     `580F1000 0000${generateBox(box, item.box.start, item.box.step)}`,
     `580F1000 00000020`,
@@ -32,8 +32,8 @@ export function generateRangeCheat (params) {
   let title
   let template = generateCheatTemplate([
     `580F0000 ${address.item[version]}`,
-    `580F1000 00000078`,
-    `580F1000 00000018`,
+    `580F1000 000000${item.pointer[version][0]}`,
+    `580F1000 000000${item.pointer[version][1]}`,
     `580F1000 00000010`,
     `30000000 0000${end}`,
     `980DF0E0`,
