@@ -201,12 +201,12 @@ export default {
       params: {
         version: undefined,
         box: 201,
-        type: '06',
+        type: '0D',
         skill1: undefined,
         level1: 0,
         skill2: undefined,
         level2: 0,
-        slot: '3-1-1'
+        slot: '4-1-1'
       },
       versionOptions: [],
       typeOptions: [],

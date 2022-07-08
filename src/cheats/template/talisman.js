@@ -7,7 +7,7 @@ export default function generateCheat (params) {
   let { version, box, type, skill1, skill2, slot } = params
   
   let title
-  let template = generateCheatTemplate([
+  let arr = [
     `580F0000 ${address.talisman[version]}`,
     `580F1000 000000${talisman.pointer[version][0]}`,
     `580F1000 000000${talisman.pointer[version][1]}`,
@@ -37,10 +37,21 @@ export default function generateCheat (params) {
     `580F1000 00000010`,
     `580F1000 0000${generateBox(box, talisman.box.start, talisman.box.step)}`,
     `580F1000 00000070`,
-    `780F0000 00000020`,
-    `680F1000 ${slot.codes[0]}`,
-    `680F0000 ${slot.codes[1]}`
-  ])
+    `780F0000 00000020`
+  ]
+  if (slot.codes.length > 2) {
+    arr = arr.concat([
+      `680F1000 ${slot.codes[0]}`,
+      `680F1000 ${slot.codes[1]}`,
+      `680F0000 ${slot.codes[2]}`
+    ])
+  } else {
+    arr = arr.concat([
+      `680F1000 ${slot.codes[0]}`,
+      `680F0000 ${slot.codes[1]}`
+    ])
+  }
+  let template = generateCheatTemplate(arr)
 
   title = `Box.${box}_${talisman.skill[skill1.skill]}(Lv.${skill1.level})_${talisman.skill[skill2.skill]}(Lv.${skill2.level})_Slot.${slot.name}`
   setCheat({ version, title, value: template })
