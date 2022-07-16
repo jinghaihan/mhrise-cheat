@@ -16,7 +16,7 @@
   {
     "title": "神秘炼金",
     "icon": "gift",
-    "target": "talisman",
+    "target": "charm",
     "activeRule": "/mhrise-cheat/",
     "children": []
   },

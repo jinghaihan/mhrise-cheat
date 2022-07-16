@@ -130,9 +130,9 @@
 </template>
 
 <script>
-import address from '@/cheats/database/address.js'
-import talisman from '@/cheats/database/talisman.js'
-import generateCheat from '@/cheats/template/talisman.js'
+import pointer from '@/cheats/database/pointer.js'
+import charm from '@/cheats/database/charm.js'
+import generateCheat from '@/cheats/template/charm.js'
 
 const columns = [
   {
@@ -152,7 +152,7 @@ const columns = [
     align: 'center',
     width: 100,
     customRender: (obj, rowData, index) => {
-      return talisman.type[rowData.type]
+      return charm.type[rowData.type]
     }
   },
   {
@@ -163,7 +163,7 @@ const columns = [
     align: 'center',
     width: 120,
     customRender: (obj, rowData, index) => {
-      return talisman.skill[rowData.skill1] + '(Lv.' + rowData.level1 + ')'
+      return charm.skill[rowData.skill1] + '(Lv.' + rowData.level1 + ')'
     }
   },
   {
@@ -174,7 +174,7 @@ const columns = [
     align: 'center',
     width: 120,
     customRender: (obj, rowData, index) => {
-      return talisman.skill[rowData.skill2] + '(Lv.' + rowData.level2 + ')'
+      return charm.skill[rowData.skill2] + '(Lv.' + rowData.level2 + ')'
     }
   },
   {
@@ -195,7 +195,7 @@ const columns = [
 ]
 
 export default {
-  name: 'talisman',
+  name: 'charm',
   data () {
     return {
       params: {
@@ -242,7 +242,7 @@ export default {
           type: row.type,
           skill1: { skill: row.skill1, level: row.level1 },
           skill2: { skill: row.skill2, level: row.level2 },
-          slot: { name: row.slot, codes: talisman.slot[row.slot].split(',') }
+          slot: { name: row.slot, codes: charm.slot[row.slot].split(',') }
         })
       })
     },
@@ -257,7 +257,7 @@ export default {
     },
     onDelete (row, index) {
       let self = this
-      let name = talisman.skill[row.skill1] + '(Lv.' + row.level1 + ') ' + talisman.skill[row.skill2] + '(Lv.' + row.level2 + ') ' + 'Slot.' + row.slot
+      let name = charm.skill[row.skill1] + '(Lv.' + row.level1 + ') ' + charm.skill[row.skill2] + '(Lv.' + row.level2 + ') ' + 'Slot.' + row.slot
       self.$confirm({
         title: '确定删除配置数据?',
         content: `${name}`,
@@ -267,7 +267,7 @@ export default {
       })
     },
     handleVersionOptions () {
-      Object.keys(address.talisman).forEach(version => {
+      Object.keys(pointer.charm).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version
@@ -276,24 +276,24 @@ export default {
       this.params.version = this.versionOptions[0].key
     },
     handleTypeOptions () {
-      Object.keys(talisman.type).forEach(id => {
+      Object.keys(charm.type).forEach(id => {
         this.typeOptions.push({
           key: id,
-          value: talisman.type[id]
+          value: charm.type[id]
         })
       })
     },
     handleSkillOptions () {
-      let keys = Object.keys(talisman.skill).sort((a, b) => parseInt(a, 16) - parseInt(b, 16))
+      let keys = Object.keys(charm.skill).sort((a, b) => parseInt(a, 16) - parseInt(b, 16))
       keys.forEach(id => {
         this.skillOptions.push({
           key: id,
-          value: talisman.skill[id]
+          value: charm.skill[id]
         })
       })
     },
     handleSlotOptions () {
-      Object.keys(talisman.slot).forEach(value => {
+      Object.keys(charm.slot).forEach(value => {
         this.slotOptions.push({
           key: value,
           value: value
@@ -318,21 +318,21 @@ export default {
     validate (value) {
       // 技能1不允许为スキル無し
       if (value.skill1 === '00') {
-        this.$message.error(`技能1不允许为${talisman.skill['00']}`)
+        this.$message.error(`技能1不允许为${charm.skill['00']}`)
         return false
       }
       // スキル無し等级只允许为0
       if (value.skill2 === '00' && value.level2 !== 0) {
-        this.$message.error(`${talisman.skill['00']}等级只允许为0`)
+        this.$message.error(`${charm.skill['00']}等级只允许为0`)
         return false
       }
       // 非スキル無し等级不允许为0
       if (value.skill1 !== '00' && value.level1 === 0) {
-        this.$message.error(`${talisman.skill[value.skill1]}等级不允许为0`)
+        this.$message.error(`${charm.skill[value.skill1]}等级不允许为0`)
         return false
       }
       if (value.skill2 !== '00' && value.level2 === 0) {
-        this.$message.error(`${talisman.skill[value.skill2]}等级不允许为0`)
+        this.$message.error(`${charm.skill[value.skill2]}等级不允许为0`)
         return false
       }
       // 技能1与技能2不能相同

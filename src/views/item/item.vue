@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import item from '@/cheats/database/item.js'
 import { generateItemCheat, generateRangeCheat } from '@/cheats/template/item.js'
 import { downloadMultipleCheat } from '@/cheats/utils/download.js'
@@ -228,7 +228,7 @@ export default {
       this.rangeVisible = true
     },
     onCartRange (data) {
-      let end = data.end.toString(16)
+      let end = (data.end - data.start + 1).toString(16)
       if (end.length < 4) {
         let prefix = ''
         for (let i = 0; i < 4 - end.length; i++) {
@@ -251,8 +251,7 @@ export default {
     async onDownloadAll (data) {
       let { exportSize } = item
       // 过滤获得选择版本全物品列表
-      let illegalArr = this.findIllegalItem(data.version)
-      let items = this.itemOptions.filter(item => !illegalArr.includes(item.key))
+      let items = _.cloneDeep(this.itemOptions)
       // 拆分分组
       let groupMap = {}
       items.forEach((item, index) => {
@@ -290,7 +289,7 @@ export default {
       this.onModalClose()
     },
     handleVersionOptions () {
-      Object.keys(address.item).forEach(version => {
+      Object.keys(pointer.item).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version
@@ -308,7 +307,6 @@ export default {
           })
         }
       })
-      console.log(this.itemOptions, this.itemOptions.length)
     },
     filterOption (input, option) {
       return (
@@ -335,12 +333,6 @@ export default {
         this.$message.error(`${item.list['0000']}数量只允许为0`)
         return false
       }
-      // 校验版本是否存在所选道具
-      let illegalArr = this.findIllegalItem(value.version)
-      if (illegalArr.includes(value.id)) {
-        this.$message.error(`${value.version}不存在${item.list[value.id]}`)
-        return false
-      }
       // 校验当前配置中是否存在同种道具/道具箱格子已经被使用
       try {
         this.data.forEach(row => {
@@ -356,22 +348,6 @@ export default {
         return false
       }
       return true
-    },
-    // 获取当前版本非法道具列表
-    findIllegalItem (version) {
-      let keys = Object.keys(item.versionAddList)
-      let index
-      for (let i = 0; i < keys.length; i++) {
-        if (keys[i] === version) {
-          index = i
-        }
-      }
-      let illegalArr = []
-      for (let i = 0; i < index; i++) {
-        illegalArr = illegalArr.concat(item.versionAddList[keys[i]])
-      }
-
-      return illegalArr
     }
   }
 }
