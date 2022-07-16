@@ -1,4 +1,4 @@
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import stats from '@/cheats/database/stats.js'
 import monster from '@/cheats/database/monster.js'
 import { generateCount, generateHunterRankExp, generateCheatTemplate, generateDoubleTime } from '@/cheats/utils/index.js'
@@ -52,76 +52,6 @@ export function generateStatsCheat (params) {
   }
 }
 
-function generateQuestCheat (version, type, count) {
-  let title
-  let template = generateCheatTemplate([
-    `580F0000 ${address.stats[version]}`,
-    `580F1000 00000070`,
-    `780F0000 000000${type}`,
-    `640F0000 00000000 0000${generateCount(count)}`
-  ])
-
-  title = `${stats.questName[type]}.${count}`
-  setCheat({ version, title, value: template })
-}
-
-function generateActivityCheat (version, type, count) {
-  let title
-  let num = generateCount(count)
-
-  let template = generateCheatTemplate([
-    `58000000 ${address.monster[version]}`,
-    `58001000 00000070`,
-    `78000000 000000${monster.totalType[type]}`,
-    `64000000 00000000 0000${num}`
-  ])
-
-  let typeName = type === 'hunted' ? '总讨伐数' : '总捕获数'
-  title = `${typeName}.${count}`
-  setCheat({ version, title, value: template })
-}
-
-function generateRank (version, rank) {
-  let title
-  let exp = generateHunterRankExp(rank)
-
-  let template = generateCheatTemplate([
-    `58020000 ${address.rank[version]}`,
-    `58021000 00000060`,
-    `78020000 00000018`,
-    `68020000 ${exp} 0000${generateCount(rank)}`
-  ])
-
-  title = `猎人等级.${rank}`
-  setCheat({ version, title, value: template })
-}
-
-function generateTimeCheat (version, time) {
-  let title
-  let template = generateCheatTemplate([
-    `580F0000 ${address.stats[version]}`,
-    `580F1000 00000070`,
-    `780F0000 00000040`,
-    `680F0000 ${generateDoubleTime(time)}`
-  ])
-
-  title = `总游戏时间.${time}`
-  setCheat({ version, title, value: template })
-}
-
-function generatePraiseCheat (version, count) {
-  let title
-  let template = generateCheatTemplate([
-    `580F0000 ${address.stats[version]}`,
-    `580F1000 00000070`,
-    `780F0000 00000048`,
-    `640F0000 00000000 0000${generateCount(count)}`
-  ])
-
-  title = `获赞次数.${count}`
-  setCheat({ version, title, value: template })
-}
-
 export function generateWeaponCheat (params) {
   let { version, data } = params
   
@@ -130,8 +60,8 @@ export function generateWeaponCheat (params) {
       if (data[type][id] || data[type][id] === 0) {
         let num = generateCount(data[type][id])
         let template = generateCheatTemplate([
-          `580F0000 ${address.stats[version]}`,
-          `580F1000 00000070`,
+          `580F0000 ${pointer.stats[version].weapon[0]}`,
+          `580F1000 000000${pointer.stats[version].weapon[1]}`,
           `580F1000 0000${type}`,
           `780F0000 000000${id}`,
           `640F0000 00000000 0000${num}`
@@ -143,4 +73,74 @@ export function generateWeaponCheat (params) {
       }
     })
   })
+}
+
+function generateQuestCheat (version, type, count) {
+  let title
+  let template = generateCheatTemplate([
+    `580F0000 ${pointer.stats[version].quest[0]}`,
+    `580F1000 000000${pointer.stats[version].quest[1]}`,
+    `780F0000 000000${type}`,
+    `640F0000 00000000 0000${generateCount(count)}`
+  ])
+
+  title = `${stats.questName[type]}.${count}`
+  setCheat({ version, title, value: template })
+}
+
+function generateTimeCheat (version, time) {
+  let title
+  let template = generateCheatTemplate([
+    `580F0000 ${pointer.stats[version].time[0]}`,
+    `580F1000 000000${pointer.stats[version].time[1]}`,
+    `780F0000 000000${pointer.stats[version].time[2]}`,
+    `680F0000 ${generateDoubleTime(time)}`
+  ])
+
+  title = `总游戏时间.${time}`
+  setCheat({ version, title, value: template })
+}
+
+function generateRank (version, rank) {
+  let title
+  let exp = generateHunterRankExp(rank)
+
+  let template = generateCheatTemplate([
+    `58020000 ${pointer.rank[version]}`,
+    `58021000 00000060`,
+    `78020000 00000018`,
+    `68020000 ${exp} 0000${generateCount(rank)}`
+  ])
+
+  title = `猎人等级.${rank}`
+  setCheat({ version, title, value: template })
+}
+
+function generateActivityCheat (version, type, count) {
+  let title
+  let num = generateCount(count)
+
+  let template = generateCheatTemplate([
+    `58000000 ${pointer.monster[version]}`,
+    `58001000 00000070`,
+    `78000000 000000${monster.totalType[type]}`,
+    `64000000 00000000 0000${num}`
+  ])
+
+  let typeName = type === 'hunted' ? '总讨伐数' : '总捕获数'
+  title = `${typeName}.${count}`
+  setCheat({ version, title, value: template })
+}
+
+function generatePraiseCheat (version, count) {
+  let title
+  let template = generateCheatTemplate([
+    `580F0000 ${pointer.stats[version]}`,
+    `580F1000 00000070`,
+    `780F0000 00000048`,
+    `640F0000 00000000 0000${generateCount(count)}`
+  ])
+
+  title = `获赞次数.${count}`
+  setCheat({ version, title, value: template })
 }

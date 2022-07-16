@@ -8,39 +8,39 @@ export default function generateCheat (params) {
   
   let title
   let arr = [
-    `580F0000 ${pointer.charm[version][0]}`,
-    `580F1000 000000${pointer.charm[version][1]}`,
-    `580F1000 000000${pointer.charm[version][2]}`,
-    `580F1000 000000${pointer.charm[version][3]}`,
+    `580F0000 ${pointer.charm[version].type[0]}`,
+    `580F1000 000000${pointer.charm[version].type[1]}`,
+    `580F1000 000000${pointer.charm[version].type[2]}`,
+    `580F1000 000000${pointer.charm[version].type[3]}`,
     `580F1000 0000${generateBox(box, charm.box.start, charm.box.step)}`,
-    `780F0000 000000${pointer.charm[version][4]}`,
+    `780F0000 000000${pointer.charm[version].type[4]}`,
     `680F0000 101000${type} 00000003`,
 
-    `580F0000 ${pointer.charmSkill[version][0]}`,
-    `580F1000 000000${pointer.charmSkill[version][1]}`,
-    `580F1000 000000${pointer.charmSkill[version][2]}`,
-    `580F1000 000000${pointer.charmSkill[version][3]}`,
+    `580F0000 ${pointer.charm[version].skill[0]}`,
+    `580F1000 000000${pointer.charm[version].skill[1]}`,
+    `580F1000 000000${pointer.charm[version].skill[2]}`,
+    `580F1000 000000${pointer.charm[version].skill[3]}`,
     `580F1000 0000${generateBox(box, charm.box.start, charm.box.step)}`,
-    `580F1000 000000${pointer.charmSkill[version][4]}`,
-    `780F0000 000000${pointer.charmSkill[version][5]}`,
+    `580F1000 000000${pointer.charm[version].skill[4]}`,
+    `780F0000 000000${pointer.charm[version].skill[5]}`,
     `640F0000 00000000 0000${skill2.skill}${skill1.skill}`,
 
-    `580F0000 ${pointer.charmSkillLevel[version][0]}`,
-    `580F1000 000000${pointer.charmSkillLevel[version][1]}`,
-    `580F1000 000000${pointer.charmSkillLevel[version][2]}`,
-    `580F1000 000000${pointer.charmSkillLevel[version][3]}`,
+    `580F0000 ${pointer.charm[version].level[0]}`,
+    `580F1000 000000${pointer.charm[version].level[1]}`,
+    `580F1000 000000${pointer.charm[version].level[2]}`,
+    `580F1000 000000${pointer.charm[version].level[3]}`,
     `580F1000 0000${generateBox(box, charm.box.start, charm.box.step)}`,
-    `580F1000 000000${pointer.charmSkillLevel[version][4]}`,
-    `780F0000 000000${pointer.charmSkillLevel[version][5]}`,
+    `580F1000 000000${pointer.charm[version].level[4]}`,
+    `780F0000 000000${pointer.charm[version].level[5]}`,
     `680F0000 0000000${skill2.level} 0000000${skill1.level}`,
 
-    `580F0000 ${pointer.charmSlot[version][0]}`,
-    `580F1000 000000${pointer.charmSlot[version][1]}`,
-    `580F1000 000000${pointer.charmSlot[version][2]}`,
-    `580F1000 000000${pointer.charmSlot[version][3]}`,
+    `580F0000 ${pointer.charm[version].slot[0]}`,
+    `580F1000 000000${pointer.charm[version].slot[1]}`,
+    `580F1000 000000${pointer.charm[version].slot[2]}`,
+    `580F1000 000000${pointer.charm[version].slot[3]}`,
     `580F1000 0000${generateBox(box, charm.box.start, charm.box.step)}`,
-    `580F1000 000000${pointer.charmSlot[version][4]}`,
-    `780F0000 000000${pointer.charmSlot[version][5]}`
+    `580F1000 000000${pointer.charm[version].slot[4]}`,
+    `780F0000 000000${pointer.charm[version].slot[5]}`
   ]
   if (slot.codes.length > 2) {
     arr = arr.concat([

@@ -1,5 +1,5 @@
 
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import buddy from '@/cheats/database/buddy.js'
 import { generateCheatTemplate, generateBox } from '@/cheats/utils/index.js'
 import { setCheat } from '@/cheats/utils/store.js'
@@ -24,7 +24,7 @@ export default function generateCheat (params) {
 function generateLevelCheat (version, type, box, level) {
   let title
   let template = generateCheatTemplate([
-    `58020000 ${address.buddy[version]}`,
+    `58020000 ${pointer.buddy[version]}`,
     `58021000 000000B0`,
     `58021000 00000010`,
     `58021000 000000${type}`,
@@ -47,7 +47,7 @@ function generateSkillCheat (version, type, box, skills) {
   switch (type) {
     case '20':
       template = generateCheatTemplate([
-        `580F0000 ${address.buddy[version]}`,
+        `580F0000 ${pointer.buddy[version]}`,
         `580F1000 000000A8`,
         `580F1000 00000048`,
         `580F1000 00000040`,
@@ -66,7 +66,7 @@ function generateSkillCheat (version, type, box, skills) {
       break
     default:
       template = generateCheatTemplate([
-        `580F0000 ${address.buddy[version]}`,
+        `580F0000 ${pointer.buddy[version]}`,
         `580F1000 000000B0`,
         `580F1000 00000010`,
         `580F1000 00000028`,
@@ -97,7 +97,7 @@ function generateSkillCheat (version, type, box, skills) {
 function generateMoveCheat (version, type, box, moves) {
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${address.buddy[version]}`,
+    `580F0000 ${pointer.buddy[version]}`,
     `580F1000 000000B0`,
     `580F1000 00000018`,
     `580F1000 00000040`,

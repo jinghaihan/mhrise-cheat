@@ -8,12 +8,12 @@ export function generateItemCheat (params) {
   
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${pointer.item[version][0]}`,
-    `580F1000 000000${pointer.item[version][1]}`,
-    `580F1000 000000${pointer.item[version][2]}`,
-    `580F1000 000000${pointer.item[version][3]}`,
-    `580F1000 000000${pointer.item[version][4]}`,
-    `780F0000 000000${pointer.item[version][5]}`,
+    `580F0000 ${pointer.item[version].single[0]}`,
+    `580F1000 000000${pointer.item[version].single[1]}`,
+    `580F1000 000000${pointer.item[version].single[2]}`,
+    `580F1000 000000${pointer.item[version].single[3]}`,
+    `580F1000 000000${pointer.item[version].single[4]}`,
+    `780F0000 000000${pointer.item[version].single[5]}`,
     `680F0000 0000${generateCount(count)} 0410${id}`
   ])
 
@@ -30,16 +30,16 @@ export function generateRangeCheat (params) {
 
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${pointer.itemRange[version][0]}`,
-    `580F1000 000000${pointer.itemRange[version][1]}`,
-    `580F1000 000000${pointer.itemRange[version][2]}`,
-    `580F1000 000000${pointer.itemRange[version][3]}`,
+    `580F0000 ${pointer.item[version].range[0]}`,
+    `580F1000 000000${pointer.item[version].range[1]}`,
+    `580F1000 000000${pointer.item[version].range[2]}`,
+    `580F1000 000000${pointer.item[version].range[3]}`,
     `30000000 0000${end}`,
     `980DF0E0`,
     `580D1000 0000${generateBox(start, item.box.start, item.box.step)}`,
-    `780D0000 000000${pointer.itemRange[version][4]}`,
+    `780D0000 000000${pointer.item[version].range[4]}`,
     `640D0000 00000000 0000${generateCount(count)}`,
-    `780F0000 000000${pointer.itemRange[version][5]}`,
+    `780F0000 000000${pointer.item[version].range[5]}`,
     `31000000`
   ])
 

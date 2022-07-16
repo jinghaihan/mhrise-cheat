@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import buddy from '@/cheats/database/buddy.js'
 import generatCheat from '@/cheats/template/buddy.js'
 import skillModal from './skillModal.vue'
@@ -288,7 +288,7 @@ export default {
       })
     },
     handleVersionOptions () {
-      Object.keys(address.buddy).forEach(version => {
+      Object.keys(pointer.buddy).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version

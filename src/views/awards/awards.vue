@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import awards from '@/cheats/database/awards.js'
 import generateCheat from '@/cheats/template/awards.js'
 
@@ -124,7 +124,7 @@ export default {
       })
     },
     handleVersionOptions () {
-      Object.keys(address.awards).forEach(version => {
+      Object.keys(pointer.awards).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version

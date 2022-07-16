@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import monster from '@/cheats/database/monster.js'
 import generateCheat from '@/cheats/template/monster.js'
 import { downloadCheat } from '@/cheats/utils/download.js'
@@ -272,7 +272,7 @@ export default {
       this.onModalClose()
     },
     handleVersionOptions () {
-      Object.keys(address.monster).forEach(version => {
+      Object.keys(pointer.monster).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version

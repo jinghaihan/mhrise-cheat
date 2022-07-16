@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import stats from '@/cheats/database/stats.js'
 import { generateWeaponCheat } from '@/cheats/template/stats.js'
 import statsModal from './statsModal.vue'
@@ -71,10 +71,14 @@ export default {
       data: [],
       statsVisible: false,
       count: {
-        '0120': {},
-        '0128': {},
-        '0130': {},
-        '0138': {}
+        '0180': {},
+        '0188': {},
+        '0190': {},
+        '0198': {},
+        '01B0': {},
+        '01A0': {},
+        '01A8': {},
+        '01B8': {}
       }
     }
   },
@@ -123,7 +127,7 @@ export default {
       })
     },
     handleVersionOptions () {
-      Object.keys(address.stats).forEach(version => {
+      Object.keys(pointer.stats).forEach(version => {
         this.versionOptions.push({
           key: version,
           value: version

@@ -1,4 +1,4 @@
-import address from '@/cheats/database/address.js'
+import pointer from '@/cheats/database/pointer.js'
 import monster from '@/cheats/database/monster.js'
 import { generateCount, generateCheatTemplate } from '@/cheats/utils/index.js'
 import { setCheat } from '@/cheats/utils/store.js'
@@ -32,7 +32,7 @@ function generateCountCheat (version, id, count, type) {
 
   let title
   let template = generateCheatTemplate([
-    `58000000 ${address.monster[version]}`,
+    `58000000 ${pointer.monster[version]}`,
     `58001000 00000070`,
     `58001000 000000${monster.type[type]}`,
     `78000000 000000${id}`,
@@ -50,7 +50,7 @@ function generateCrownCheat (version, id, type, titled) {
 
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${address.monster[version]}`,
+    `580F0000 ${pointer.monster[version]}`,
     `580F1000 00000070`,
     `580F1000 0000${monster.crownType[type]}`,
     `780F0000 000000${id}`,
