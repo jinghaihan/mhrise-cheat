@@ -2,7 +2,7 @@
   <div class="header-container">
     <!-- logo区域 -->
     <div :class="`logo-container ${theme}-logo-container container`">
-      <img :src="require('@/assets/logo.png')" />
+      <img :src="require('@/assets/logo-sb.png')" />
     </div>
     <!-- 导航栏区域 -->
     <div class="nav-container container">

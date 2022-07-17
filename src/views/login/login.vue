@@ -6,7 +6,7 @@
       </div>
       <div class="form-container">
         <div class="title">
-          <img class="logo" :src="require('@/assets/logo.png')" />
+          <img class="logo" :src="require('@/assets/logo-sb.png')" />
         </div>
         <div class="form">
           <a-form :form="form" autocomplete="off">
