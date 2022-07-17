@@ -101,6 +101,7 @@ function generateRank (version, rank) {
   setCheat({ version, title, value: template })
 }
 
+// todo
 function generateActivityCheat (version, type, count) {
   let title
   let num = generateCount(count)

@@ -32,9 +32,9 @@ function generateCountCheat (version, id, count, type) {
 
   let title
   let template = generateCheatTemplate([
-    `58000000 ${pointer.monster[version]}`,
-    `58001000 00000070`,
-    `58001000 000000${monster.type[type]}`,
+    `58000000 ${pointer.monster[version].single[0]}`,
+    `58001000 000000${pointer.monster[version].single[1]}`,
+    `58001000 0000${monster.type[type]}`,
     `78000000 000000${id}`,
     `64000000 00000000 0000${num}`
   ])
@@ -50,9 +50,9 @@ function generateCrownCheat (version, id, type, titled) {
 
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${pointer.monster[version]}`,
-    `580F1000 00000070`,
-    `580F1000 0000${monster.crownType[type]}`,
+    `580F0000 ${pointer.monster[version].single[0]}`,
+    `580F1000 000000${pointer.monster[version].single[1]}`,
+    `580F1000 0000${monster.type[type]}`,
     `780F0000 000000${id}`,
     `640F0000 00000000 ${item[type]}`
   ])
