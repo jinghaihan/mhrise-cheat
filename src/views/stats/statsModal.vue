@@ -27,7 +27,12 @@
         </a-col>
         <a-col :span="12">
           <a-form-item label="猎人等级">
-            <a-input-number style="width: 100%" :min="0" :max="999" v-model="params.rank" placeholder="猎人等级"></a-input-number>
+            <a-input-number style="width: 100%" :min="9" :max="999" v-model="params.rank" placeholder="猎人等级"></a-input-number>
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="大师等级">
+            <a-input-number style="width: 100%" :min="7" :max="999" v-model="params.masterRank" placeholder="大师等级"></a-input-number>
           </a-form-item>
         </a-col>
       </a-row>
@@ -146,6 +151,7 @@ export default {
         hunted: undefined,
         captured: undefined,
         // 等级
+        masterRank: undefined,
         rank: undefined,
         // 总游戏时间
         time: undefined,

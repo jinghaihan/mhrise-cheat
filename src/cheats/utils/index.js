@@ -35,28 +35,6 @@ export function generateBox (box, start, step) {
   return num
 }
 
-export function generateHunterRankExp (count) {
-  let exp = 0
-  let keys = Object.keys(stats.rankExp)
-  try {
-    keys.forEach(key => {
-      let temp = key.split('-')
-      let min = parseInt(temp[0])
-      let max = parseInt(temp[1])
-      // 寻找当前rank所在经验区间
-      if (min <= count && count <= max) {
-        exp += (count - min + 1) * stats.rankExp[key]
-        throw new Error()
-      } else {
-        exp += (max - min + 1) * stats.rankExp[key]
-      }
-    })
-  } catch (error) {
-    exp = generateCount(exp, 8)
-    return exp
-  }
-}
-
 export function generateDoubleTime (hour) {
   let second = hour * 60 * 60
   let string = getDoubleHex(second)

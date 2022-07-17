@@ -1,7 +1,7 @@
 import pointer from '@/cheats/database/pointer.js'
 import stats from '@/cheats/database/stats.js'
 import monster from '@/cheats/database/monster.js'
-import { generateCount, generateHunterRankExp, generateCheatTemplate, generateDoubleTime } from '@/cheats/utils/index.js'
+import { generateCount, generateCheatTemplate, generateDoubleTime } from '@/cheats/utils/index.js'
 import { setCheat } from '@/cheats/utils/store.js'
 
 export function generateStatsCheat (params) {
@@ -34,6 +34,10 @@ export function generateStatsCheat (params) {
   // 猎人等级
   if (data.rank) {
     generateRank(version, data['rank'])
+  }
+  // 大师等级
+  if (data.masterRank) {
+    generateMasterRank(version, data['masterRank'])
   }
 }
 
@@ -88,16 +92,29 @@ function generateTimeCheat (version, time) {
 
 function generateRank (version, rank) {
   let title
-  let exp = generateHunterRankExp(rank)
 
   let template = generateCheatTemplate([
     `58020000 ${pointer.stats[version].rank[0]}`,
     `58021000 000000${pointer.stats[version].rank[1]}`,
     `78020000 000000${pointer.stats[version].rank[2]}`,
-    `68020000 ${exp} 0000${generateCount(rank)}`
+    `68020000 ${stats.rankExp[parseInt(rank)]} 0000${generateCount(rank)}`
   ])
 
   title = `猎人等级.${rank}`
+  setCheat({ version, title, value: template })
+}
+
+function generateMasterRank (version, masterRank) {
+  let title
+
+  let template = generateCheatTemplate([
+    `58020000 ${pointer.stats[version].masterRank[0]}`,
+    `58021000 000000${pointer.stats[version].masterRank[1]}`,
+    `78020000 000000${pointer.stats[version].masterRank[2]}`,
+    `68020000 ${stats.masterRankExp[parseInt(masterRank)]} 0000${generateCount(masterRank)}`
+  ])
+
+  title = `大师等级.${masterRank}`
   setCheat({ version, title, value: template })
 }
 
