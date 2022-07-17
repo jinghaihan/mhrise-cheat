@@ -1,14 +1,5 @@
 const stats = {
   quest: {
-    village: 'A0',
-    aspiringHub: 'A4',
-    adeptHub: 'A8',
-    rampage: 'AC',
-    arena: 'B0'
-    // '': 'B4',
-    // '': 'B8'
-  },
-  questName: {
     'A0': '村庄任务',
     'A4': '集会所下位任务',
     'A8': '集会所上位任务',

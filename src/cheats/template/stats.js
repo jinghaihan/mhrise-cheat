@@ -7,26 +7,13 @@ import { setCheat } from '@/cheats/utils/store.js'
 export function generateStatsCheat (params) {
   let { version, data } = params
 
-  // 村庄任务
-  if (data.village) {
-    generateQuestCheat(version, stats.quest['village'], data['village'])
-  }
-  // 集会所下位任务
-  if (data.aspiringHub) {
-    generateQuestCheat(version, stats.quest['aspiringHub'], data['aspiringHub'])
-  }
-  // 集会所上位任务
-  if (data.adeptHub) {
-    generateQuestCheat(version, stats.quest['adeptHub'], data['adeptHub'])
-  }
-  // 百龙夜行
-  if (data.rampage) {
-    generateQuestCheat(version, stats.quest['rampage'], data['rampage'])
-  }
-  // 斗技大会任务
-  if (data.arena) {
-    generateQuestCheat(version, stats.quest['arena'], data['arena'])
-  }
+  // 任务完成次数
+  let types = Object.keys(stats.quest)
+  types.forEach(type => {
+    if (data[type]) {
+      generateQuestCheat(version, type, data[type])
+    }
+  })
 
   // 总游戏时间
   if (data.time) {
@@ -36,7 +23,6 @@ export function generateStatsCheat (params) {
   if (data.praise) {
     generatePraiseCheat(version, data['praise'])
   }
-
   // 总讨伐数
   if (data.hunted) {
     generateActivityCheat(version, 'hunted', data['hunted'])
@@ -45,7 +31,6 @@ export function generateStatsCheat (params) {
   if (data.captured) {
     generateActivityCheat(version, 'captured', data['captured'])
   }
-
   // 猎人等级
   if (data.rank) {
     generateRank(version, data['rank'])
@@ -84,7 +69,7 @@ function generateQuestCheat (version, type, count) {
     `640F0000 00000000 0000${generateCount(count)}`
   ])
 
-  title = `${stats.questName[type]}.${count}`
+  title = `${stats.quest[type]}.${count}`
   setCheat({ version, title, value: template })
 }
 
@@ -106,9 +91,9 @@ function generateRank (version, rank) {
   let exp = generateHunterRankExp(rank)
 
   let template = generateCheatTemplate([
-    `58020000 ${pointer.rank[version]}`,
-    `58021000 00000060`,
-    `78020000 00000018`,
+    `58020000 ${pointer.stats[version].rank[0]}`,
+    `58021000 000000${pointer.stats[version].rank[1]}`,
+    `78020000 000000${pointer.stats[version].rank[2]}`,
     `68020000 ${exp} 0000${generateCount(rank)}`
   ])
 

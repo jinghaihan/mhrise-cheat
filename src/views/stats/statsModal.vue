@@ -4,7 +4,7 @@
     @cancel="closeModal"
     @ok="onSubmit"
     okText="加入购物车"
-    :width="900"
+    :width="1100"
     :maskClosable="false"
     title="其他"
   >
@@ -39,27 +39,47 @@
         </div>
         <a-col :span="12">
           <a-form-item label="村庄任务">
-            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params.village" placeholder="村庄任务完成次数"></a-input-number>
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['A0']" placeholder="村庄任务完成次数"></a-input-number>
           </a-form-item>
         </a-col>
         <a-col :span="12">
           <a-form-item label="集会所下位任务">
-            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params.aspiringHub" placeholder="集会所下位任务完成次数"></a-input-number>
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['A4']" placeholder="集会所下位任务完成次数"></a-input-number>
           </a-form-item>
         </a-col>
         <a-col :span="12">
           <a-form-item label="集会所上位任务">
-            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params.adeptHub" placeholder="集会所上位任务完成次数"></a-input-number>
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['A8']" placeholder="集会所上位任务完成次数"></a-input-number>
           </a-form-item>
         </a-col>
         <a-col :span="12">
           <a-form-item label="百龙夜行">
-            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params.rampage" placeholder="百龙夜行完成次数"></a-input-number>
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['AC']" placeholder="百龙夜行完成次数"></a-input-number>
           </a-form-item>
         </a-col>
         <a-col :span="12">
           <a-form-item label="斗技大会任务">
-            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params.arena" placeholder="斗技大会任务完成次数"></a-input-number>
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['B0']" placeholder="斗技大会任务完成次数"></a-input-number>
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="集会所大师等级任务">
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['B4']" placeholder="集会所大师等级任务完成次数"></a-input-number>
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="盟友任务：重要调查任务">
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['B8']" placeholder="盟友任务：重要调查任务完成次数"></a-input-number>
+          </a-form-item>
+        </a-col>
+         <a-col :span="12">
+          <a-form-item label="盟友任务：盟友同行任务">
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['BC']" placeholder="盟友任务：盟友同行任务完成次数"></a-input-number>
+          </a-form-item>
+        </a-col>
+        <a-col :span="12">
+          <a-form-item label="怪异任务：★1～4">
+            <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params['C0']" placeholder="怪异任务：★1～4完成次数"></a-input-number>
           </a-form-item>
         </a-col>
       </a-row>
@@ -113,11 +133,15 @@ export default {
       params: {
         version: undefined,
         // 任务完成次数
-        village: undefined,
-        aspiringHub: undefined,
-        adeptHub: undefined,
-        rampage: undefined,
-        arena: undefined,
+        'A0': undefined,
+        'A4': undefined,
+        'A8': undefined,
+        'AC': undefined,
+        'B0': undefined,
+        'B4': undefined,
+        'B8': undefined,
+        'BC': undefined,
+        'C0': undefined,
         // 猎人活动记录
         hunted: undefined,
         captured: undefined,
