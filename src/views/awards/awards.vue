@@ -30,7 +30,7 @@
         <a-col :xxl="1" :xl="2" :lg="2" :md="3" :sm="4" v-for="(item, index) in data" :key="index">
           <a-tooltip>
             <template slot="title">
-              {{item.name}}
+              {{item.name}}：{{item.description}}
             </template>
             <a-card class="awards-card" hoverable>
               <img slot="cover" :src="item.img" class="image">
@@ -162,11 +162,12 @@ export default {
       }
     },
     renderImage (data) {
-      const context = require.context('@/assets/awards/', true, /\.png$/)
-      const imgName = `./${data.group}-${data.id}.png`
-      const src = context(imgName)
+      // const context = require.context('@/assets/awards/', true, /\.png$/)
+      // const imgName = `./${data.group}-${data.id}.png`
+      // const src = context(imgName)
       
-      return src
+      // return src
+      return ''
     },
     calculateImageWidth () {
       if (this.data && this.data.length) {
