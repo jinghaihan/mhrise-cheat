@@ -565,10 +565,6 @@ const monster = {
     captured: '0140',
     longest: '0148',
     shortest: '0150'
-  },
-  totalType: {
-    hunted: 'A4',
-    captured: 'A8'
   }
 }
 

@@ -35,8 +35,15 @@
     "children": [
       {
         "title": "统计信息",
-        "icon": "bar-chart",
+        "icon": "form",
         "target": "stats",
+        "activeRule": "/mhrise-cheat/",
+        "children": []
+      },
+      {
+        "title": "武器使用频度",
+        "icon": "bar-chart",
+        "target": "usage",
         "activeRule": "/mhrise-cheat/",
         "children": []
       },

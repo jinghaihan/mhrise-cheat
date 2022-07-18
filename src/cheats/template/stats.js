@@ -1,6 +1,5 @@
 import pointer from '@/cheats/database/pointer.js'
 import stats from '@/cheats/database/stats.js'
-import monster from '@/cheats/database/monster.js'
 import { generateCount, generateCheatTemplate, generateDoubleTime } from '@/cheats/utils/index.js'
 import { setCheat } from '@/cheats/utils/store.js'
 
@@ -23,13 +22,9 @@ export function generateStatsCheat (params) {
   if (data.praise) {
     generatePraiseCheat(version, data['praise'])
   }
-  // 总讨伐数
-  if (data.hunted) {
-    generateActivityCheat(version, 'hunted', data['hunted'])
-  }
-  // 总捕获数
-  if (data.captured) {
-    generateActivityCheat(version, 'captured', data['captured'])
+  // 总讨伐数/总捕获数
+  if (data.hunted && data.captured) {
+    generateRecordCheat(version, data['hunted'], data['captured'])
   }
   // 猎人等级
   if (data.rank) {
@@ -39,29 +34,6 @@ export function generateStatsCheat (params) {
   if (data.masterRank) {
     generateMasterRank(version, data['masterRank'])
   }
-}
-
-export function generateWeaponCheat (params) {
-  let { version, data } = params
-  
-  Object.keys(data).forEach(type => {
-    Object.keys(data[type]).forEach(id => {
-      if (data[type][id] || data[type][id] === 0) {
-        let num = generateCount(data[type][id])
-        let template = generateCheatTemplate([
-          `580F0000 ${pointer.stats[version].weapon[0]}`,
-          `580F1000 000000${pointer.stats[version].weapon[1]}`,
-          `580F1000 0000${type}`,
-          `780F0000 000000${id}`,
-          `640F0000 00000000 0000${num}`
-        ])
-
-        let weapon = stats.weaponList.filter(item => item.id === id)[0].name
-        let title = `${stats.weaponQuest[type]}.${weapon}.${data[type][id]}`
-        setCheat({ version, title, value: template })
-      }
-    })
-  })
 }
 
 function generateQuestCheat (version, type, count) {
@@ -118,23 +90,21 @@ function generateMasterRank (version, masterRank) {
   setCheat({ version, title, value: template })
 }
 
-// todo
-function generateActivityCheat (version, type, count) {
+function generateRecordCheat (version, hunted, captured) {
   let title
-  let num = generateCount(count)
 
   let template = generateCheatTemplate([
-    `58000000 ${pointer.monster[version]}`,
-    `58001000 00000070`,
-    `78000000 000000${monster.totalType[type]}`,
-    `64000000 00000000 0000${num}`
+    `580F0000 ${pointer.monster[version].total[0]}`,
+    `580F1000 000000${pointer.monster[version].total[1]}`,
+    `780F0000 000000${pointer.monster[version].total[2]}`,
+    `680F0000 ${generateCount(hunted, 8)} ${generateCount(captured, 8)}`
   ])
 
-  let typeName = type === 'hunted' ? '总讨伐数' : '总捕获数'
-  title = `${typeName}.${count}`
+  title = `总讨伐数.${hunted}_总捕获数.${captured}`
   setCheat({ version, title, value: template })
 }
 
+// todo
 function generatePraiseCheat (version, count) {
   let title
   let template = generateCheatTemplate([

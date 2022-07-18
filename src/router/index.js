@@ -67,6 +67,7 @@ const routerMap = {
   'charm': () => import('@/views/charm/charm.vue'),
   'buddy': () => import('@/views/buddy/buddy.vue'),
   'stats': () => import('@/views/stats/stats.vue'),
+  'usage': () => import('@/views/usage/usage.vue'),
   'awards': () => import('@/views/awards/awards.vue'),
   'monster': () => import('@/views/monster/monster.vue')
 }
