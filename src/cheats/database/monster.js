@@ -7,7 +7,8 @@ const monster = {
       'japaneseName': 'オサイズチ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 2,
@@ -16,7 +17,8 @@ const monster = {
       'japaneseName': 'ドスバギィ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 3,
@@ -25,7 +27,8 @@ const monster = {
       'japaneseName': 'クルルヤック',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 4,
@@ -34,7 +37,8 @@ const monster = {
       'japaneseName': 'ドスフロギィ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 5,
@@ -43,7 +47,8 @@ const monster = {
       'japaneseName': 'アオアシラ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 6,
@@ -52,7 +57,8 @@ const monster = {
       'japaneseName': 'ウルクスス',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 7,
@@ -61,7 +67,8 @@ const monster = {
       'japaneseName': 'ラングロトラ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 8,
@@ -70,7 +77,8 @@ const monster = {
       'japaneseName': 'アケノシルム',
       'longest': '3F95C28F',
       'shortest': '3F3F7CEE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 9,
@@ -79,7 +87,8 @@ const monster = {
       'japaneseName': 'ロアルドロス',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 10,
@@ -88,7 +97,8 @@ const monster = {
       'japaneseName': 'ボルボロス',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 11,
@@ -97,7 +107,8 @@ const monster = {
       'japaneseName': 'ダイミョウザザミ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 12,
@@ -106,7 +117,8 @@ const monster = {
       'japaneseName': 'フルフル',
       'longest': '3F947AE1',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 13,
@@ -115,7 +127,8 @@ const monster = {
       'japaneseName': 'ヨツミワドウ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 14,
@@ -124,7 +137,8 @@ const monster = {
       'japaneseName': 'ビシュテンゴ',
       'longest': '3F9D70A4',
       'shortest': '3F4CCCCD',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 15,
@@ -133,7 +147,8 @@ const monster = {
       'japaneseName': 'ビシュテンゴ亜種',
       'longest': '3F9D70A4',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 16,
@@ -142,7 +157,8 @@ const monster = {
       'japaneseName': 'プケプケ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 17,
@@ -151,7 +167,8 @@ const monster = {
       'japaneseName': 'ジュラトドス',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 18,
@@ -160,7 +177,8 @@ const monster = {
       'japaneseName': 'バサルモス',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 19,
@@ -169,7 +187,8 @@ const monster = {
       'japaneseName': 'イソネミクニ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 20,
@@ -178,7 +197,8 @@ const monster = {
       'japaneseName': 'イソネミクニ亜種',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 21,
@@ -187,7 +207,8 @@ const monster = {
       'japaneseName': 'リオレイア',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 22,
@@ -196,7 +217,8 @@ const monster = {
       'japaneseName': 'ベリオロス',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 23,
@@ -205,7 +227,8 @@ const monster = {
       'japaneseName': 'トビカガチ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 24,
@@ -214,7 +237,8 @@ const monster = {
       'japaneseName': 'マガイマガド',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 25,
@@ -232,7 +256,8 @@ const monster = {
       'japaneseName': 'アンジャナフ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 27,
@@ -241,7 +266,8 @@ const monster = {
       'japaneseName': 'ナルガクルガ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 28,
@@ -259,7 +285,8 @@ const monster = {
       'japaneseName': 'ゴシャハギ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 30,
@@ -268,7 +295,8 @@ const monster = {
       'japaneseName': 'ガランゴルム',
       'longest': '3F9D70A4',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 31,
@@ -277,7 +305,8 @@ const monster = {
       'japaneseName': 'ショウグンギザミ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 32,
@@ -295,7 +324,8 @@ const monster = {
       'japaneseName': 'オロミドロ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 34,
@@ -385,7 +415,8 @@ const monster = {
       'japaneseName': 'ヤツカダキ',
       'longest': '3FA00000',
       'shortest': '3F6147AE',
-      'type': ''
+      'type': '',
+      'anomaly': true
     },
     {
       'index': 44,

@@ -49,7 +49,8 @@
                             :min="0"
                             :max="9999"
                             style="width: 80%"
-                            allowClear>
+                            allowClear
+                            :disabled="!data.data.anomaly">
             </a-input-number>
           </a-form-item>
         </a-col>

@@ -113,12 +113,10 @@
                 </a-tooltip>
               </template>
               <a-row>
-                <a-col :span="12">
-                  <a-input-number style="width: 100%" :min="0" :max="99999" v-model="params.hunted" placeholder="总讨伐数完成次数" />
-                </a-col>
-                <a-col :span="12">
-                  <a-input-number style="width: 100%" :min="0" :max="99999" v-model="params.captured" placeholder="总捕获数完成次数" />
-                </a-col>
+                <a-input-group compact>
+                  <a-input-number style="width: 50%" :min="0" :max="99999" v-model="params.hunted" placeholder="总讨伐数完成次数" />
+                  <a-input-number style="width: 50%" :min="0" :max="99999" v-model="params.captured" placeholder="总捕获数完成次数" />
+                </a-input-group>
               </a-row>
             </a-form-item>
           </a-col>
