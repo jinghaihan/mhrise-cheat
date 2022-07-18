@@ -111,7 +111,7 @@ export default {
       this.$forceUpdate()
     },
     handleData () {
-      awards.list.forEach(award => {
+      awards.list.forEach((award, index) => {
         let img = this.renderImage(award)
         this.data.push({
           ...award,
@@ -119,6 +119,7 @@ export default {
         })
         this.checkbox[award.group + '-' + award.id] = false
       })
+      console.log(this.data)
       this.$nextTick(() => {
         this.calculateImageWidth()
       })
@@ -162,12 +163,16 @@ export default {
       }
     },
     renderImage (data) {
-      // const context = require.context('@/assets/awards/', true, /\.png$/)
-      // const imgName = `./${data.group}-${data.id}.png`
-      // const src = context(imgName)
+      let src
+      try {
+        const context = require.context('@/assets/awards/', true, /\.png$/)
+        const imgName = `./${data.group}-${data.id}.png`
+        src = context(imgName)
+      } catch (error) {
+        src = ''
+      }
       
-      // return src
-      return ''
+      return src
     },
     calculateImageWidth () {
       if (this.data && this.data.length) {
