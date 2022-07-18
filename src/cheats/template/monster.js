@@ -4,7 +4,7 @@ import { generateCount, generateCheatTemplate } from '@/cheats/utils/index.js'
 import { setCheat } from '@/cheats/utils/store.js'
 
 export default function generateCheat (params) {
-  let { version, id, hunted, captured, longest, shortest, titled } = params
+  let { version, id, hunted, captured, anomaly, longest, shortest, titled } = params
   
   let template = ``
   // 狩猎数
@@ -14,6 +14,10 @@ export default function generateCheat (params) {
   // 捕获数
   if (captured || captured === 0) {
     generateCountCheat(version, id, captured, 'captured')
+  }
+  // 怪异讨伐数
+  if (anomaly || anomaly === 0) {
+    generateCountCheat(version, id, anomaly, 'anomaly')
   }
   // 最大金冠
   if (longest) {
@@ -32,15 +36,28 @@ function generateCountCheat (version, id, count, type) {
 
   let title
   let template = generateCheatTemplate([
-    `58000000 ${pointer.monster[version].single[0]}`,
-    `58001000 000000${pointer.monster[version].single[1]}`,
-    `58001000 0000${monster.type[type]}`,
-    `78000000 000000${id}`,
-    `64000000 00000000 0000${num}`
+    `580A0000 ${pointer.monster[version].single[0]}`,
+    `580A1000 000000${pointer.monster[version].single[1]}`,
+    `580A1000 0000${monster.type[type]}`,
+    `780A0000 0000${id}`,
+    `640A0000 00000000 0000${num}`
   ])
 
   let monsterName = monster.list.filter(item => item.id === id)[0].name
-  let typeName = type === 'hunted' ? '狩猎数' : '捕获数'
+  let typeName
+  switch (type) {
+    case 'hunted':
+      typeName = '狩猎数'
+      break
+    case 'captured':
+      typeName = '捕获数'
+      break
+    case 'anomaly':
+      typeName = '怪异讨伐数'
+      break
+    default:
+      break
+  }
   title = `${monsterName}_${typeName}.${count}`
   setCheat({ version, title, value: template })
 }
@@ -50,11 +67,11 @@ function generateCrownCheat (version, id, type, titled) {
 
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${pointer.monster[version].single[0]}`,
-    `580F1000 000000${pointer.monster[version].single[1]}`,
-    `580F1000 0000${monster.type[type]}`,
-    `780F0000 000000${id}`,
-    `640F0000 00000000 ${item[type]}`
+    `580A0000 ${pointer.monster[version].crown[0]}`,
+    `580A1000 000000${pointer.monster[version].crown[1]}`,
+    `580A1000 0000${monster.type[type]}`,
+    `780A0000 0000${id}`,
+    `640A0000 00000000 ${item[type]}`
   ])
 
   if (titled) {

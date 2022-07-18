@@ -189,6 +189,7 @@ export default {
           id: item.id,
           hunted: item.params.hunted,
           captured: item.params.captured,
+          anomaly: item.params.anomaly,
           longest: item.params.longest,
           shortest: item.params.shortest,
           titled: true 

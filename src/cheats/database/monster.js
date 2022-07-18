@@ -2,7 +2,7 @@ const monster = {
   list: [
     {
       'index': 1,
-      'id': 'B4',
+      'id': '00B4',
       'name': '镰鼬龙王',
       'japaneseName': 'オサイズチ',
       'longest': '3FA00000',
@@ -11,7 +11,7 @@ const monster = {
     },
     {
       'index': 2,
-      'id': '64',
+      'id': '0064',
       'name': '眠狗龙王',
       'japaneseName': 'ドスバギィ',
       'longest': '3FA00000',
@@ -20,7 +20,7 @@ const monster = {
     },
     {
       'index': 3,
-      'id': 'C8',
+      'id': '00C8',
       'name': '搔鸟',
       'japaneseName': 'クルルヤック',
       'longest': '3FA00000',
@@ -29,7 +29,7 @@ const monster = {
     },
     {
       'index': 4,
-      'id': '70',
+      'id': '0070',
       'name': '毒狗龙王',
       'japaneseName': 'ドスフロギィ',
       'longest': '3FA00000',
@@ -38,7 +38,7 @@ const monster = {
     },
     {
       'index': 5,
-      'id': '74',
+      'id': '0074',
       'name': '青熊兽',
       'japaneseName': 'アオアシラ',
       'longest': '3FA00000',
@@ -47,7 +47,7 @@ const monster = {
     },
     {
       'index': 6,
-      'id': '7C',
+      'id': '007C',
       'name': '白兔兽',
       'japaneseName': 'ウルクスス',
       'longest': '3FA00000',
@@ -56,7 +56,7 @@ const monster = {
     },
     {
       'index': 7,
-      'id': '80',
+      'id': '0080',
       'name': '赤甲兽',
       'japaneseName': 'ラングロトラ',
       'longest': '3FA00000',
@@ -65,7 +65,7 @@ const monster = {
     },
     {
       'index': 8,
-      'id': '98',
+      'id': '0098',
       'name': '伞鸟',
       'japaneseName': 'アケノシルム',
       'longest': '3F95C28F',
@@ -74,7 +74,7 @@ const monster = {
     },
     {
       'index': 9,
-      'id': '60',
+      'id': '0060',
       'name': '水兽',
       'japaneseName': 'ロアルドロス',
       'longest': '3FA00000',
@@ -83,7 +83,7 @@ const monster = {
     },
     {
       'index': 10,
-      'id': '5C',
+      'id': '005C',
       'name': '土砂龙',
       'japaneseName': 'ボルボロス',
       'longest': '3FA00000',
@@ -92,7 +92,7 @@ const monster = {
     },
     {
       'index': 11,
-      'id': '',
+      'id': '0158',
       'name': '大名盾蟹',
       'japaneseName': 'ダイミョウザザミ',
       'longest': '3FA00000',
@@ -101,7 +101,7 @@ const monster = {
     },
     {
       'index': 12,
-      'id': '30',
+      'id': '0030',
       'name': '奇怪龙',
       'japaneseName': 'フルフル',
       'longest': '3F947AE1',
@@ -110,7 +110,7 @@ const monster = {
     },
     {
       'index': 13,
-      'id': '9C',
+      'id': '009C',
       'name': '河童蛙',
       'japaneseName': 'ヨツミワドウ',
       'longest': '3FA00000',
@@ -119,7 +119,7 @@ const monster = {
     },
     {
       'index': 14,
-      'id': '94',
+      'id': '0094',
       'name': '天狗兽',
       'japaneseName': 'ビシュテンゴ',
       'longest': '3F9D70A4',
@@ -128,7 +128,7 @@ const monster = {
     },
     {
       'index': 15,
-      'id': '',
+      'id': '0180',
       'name': '绯天狗兽',
       'japaneseName': 'ビシュテンゴ亜種',
       'longest': '3F9D70A4',
@@ -137,7 +137,7 @@ const monster = {
     },
     {
       'index': 16,
-      'id': 'C4',
+      'id': '00C4',
       'name': '毒妖鸟',
       'japaneseName': 'プケプケ',
       'longest': '3FA00000',
@@ -146,7 +146,7 @@ const monster = {
     },
     {
       'index': 17,
-      'id': 'CC',
+      'id': '00CC',
       'name': '泥鱼龙',
       'japaneseName': 'ジュラトドス',
       'longest': '3FA00000',
@@ -155,7 +155,7 @@ const monster = {
     },
     {
       'index': 18,
-      'id': '34',
+      'id': '0034',
       'name': '岩龙',
       'japaneseName': 'バサルモス',
       'longest': '3FA00000',
@@ -164,7 +164,7 @@ const monster = {
     },
     {
       'index': 19,
-      'id': 'A0',
+      'id': '00A0',
       'name': '人鱼龙',
       'japaneseName': 'イソネミクニ',
       'longest': '3FA00000',
@@ -173,7 +173,7 @@ const monster = {
     },
     {
       'index': 20,
-      'id': '',
+      'id': '0184',
       'name': '冰人鱼龙',
       'japaneseName': 'イソネミクニ亜種',
       'longest': '3FA00000',
@@ -182,7 +182,7 @@ const monster = {
     },
     {
       'index': 21,
-      'id': '20',
+      'id': '0020',
       'name': '雌火龙',
       'japaneseName': 'リオレイア',
       'longest': '3FA00000',
@@ -191,7 +191,7 @@ const monster = {
     },
     {
       'index': 22,
-      'id': '58',
+      'id': '0058',
       'name': '冰牙龙',
       'japaneseName': 'ベリオロス',
       'longest': '3FA00000',
@@ -200,7 +200,7 @@ const monster = {
     },
     {
       'index': 23,
-      'id': 'D0',
+      'id': '00D0',
       'name': '飞雷龙',
       'japaneseName': 'トビカガチ',
       'longest': '3FA00000',
@@ -209,7 +209,7 @@ const monster = {
     },
     {
       'index': 24,
-      'id': '90',
+      'id': '0090',
       'name': '怨虎龙',
       'japaneseName': 'マガイマガド',
       'longest': '3FA00000',
@@ -218,7 +218,7 @@ const monster = {
     },
     {
       'index': 25,
-      'id': '',
+      'id': '017C',
       'name': '嗟怨震天怨虎龙',
       'japaneseName': '怨嗟響めくマガイマガド',
       'longest': '3F9851EC',
@@ -227,7 +227,7 @@ const monster = {
     },
     {
       'index': 26,
-      'id': 'C0',
+      'id': '00C0',
       'name': '蛮颚龙',
       'japaneseName': 'アンジャナフ',
       'longest': '3FA00000',
@@ -236,7 +236,7 @@ const monster = {
     },
     {
       'index': 27,
-      'id': '54',
+      'id': '0054',
       'name': '迅龙',
       'japaneseName': 'ナルガクルガ',
       'longest': '3FA00000',
@@ -245,7 +245,7 @@ const monster = {
     },
     {
       'index': 28,
-      'id': '84',
+      'id': '0084',
       'name': '泡狐龙',
       'japaneseName': 'タマミツネ',
       'longest': '3FA00000',
@@ -254,7 +254,7 @@ const monster = {
     },
     {
       'index': 29,
-      'id': 'B0',
+      'id': '00B0',
       'name': '雪鬼兽',
       'japaneseName': 'ゴシャハギ',
       'longest': '3FA00000',
@@ -263,7 +263,7 @@ const monster = {
     },
     {
       'index': 30,
-      'id': '',
+      'id': '019C',
       'name': '刚缠兽',
       'japaneseName': 'ガランゴルム',
       'longest': '3F9D70A4',
@@ -272,7 +272,7 @@ const monster = {
     },
     {
       'index': 31,
-      'id': '',
+      'id': '015C',
       'name': '将军镰蟹',
       'japaneseName': 'ショウグンギザミ',
       'longest': '3FA00000',
@@ -281,7 +281,7 @@ const monster = {
     },
     {
       'index': 32,
-      'id': '28',
+      'id': '0028',
       'name': '火龙',
       'japaneseName': 'リオレウス',
       'longest': '3FA00000',
@@ -290,7 +290,7 @@ const monster = {
     },
     {
       'index': 33,
-      'id': 'A8',
+      'id': '00A8',
       'name': '泥翁龙',
       'japaneseName': 'オロミドロ',
       'longest': '3FA00000',
@@ -299,7 +299,7 @@ const monster = {
     },
     {
       'index': 34,
-      'id': '',
+      'id': '018C',
       'name': '熔翁龙',
       'japaneseName': 'オロミドロ亜種',
       'longest': '3FA00000',
@@ -308,7 +308,7 @@ const monster = {
     },
     {
       'index': 35,
-      'id': '68',
+      'id': '0068',
       'name': '雷狼龙',
       'japaneseName': 'ジンオウガ',
       'longest': '3FA00000',
@@ -317,7 +317,7 @@ const monster = {
     },
     {
       'index': 36,
-      'id': '',
+      'id': '0198',
       'name': '冰狼龙',
       'japaneseName': 'ルナガロン',
       'longest': '3FA00000',
@@ -326,7 +326,7 @@ const monster = {
     },
     {
       'index': 37,
-      'id': '',
+      'id': '0174',
       'name': '电龙',
       'japaneseName': 'ライゼクス',
       'longest': '3FA00000',
@@ -335,7 +335,7 @@ const monster = {
     },
     {
       'index': 38,
-      'id': '',
+      'id': '01A4',
       'name': '棘龙',
       'japaneseName': 'エスピナス',
       'longest': '3FA00000',
@@ -344,7 +344,7 @@ const monster = {
     },
     {
       'index': 39,
-      'id': '',
+      'id': '0168',
       'name': '黑蚀龙',
       'japaneseName': 'ゴア・マガラ',
       'longest': '3F9851EC',
@@ -353,7 +353,7 @@ const monster = {
     },
     {
       'index': 40,
-      'id': '',
+      'id': '0170',
       'name': '千刃龙',
       'japaneseName': 'セルレギオス',
       'longest': '3FA00000',
@@ -362,7 +362,7 @@ const monster = {
     },
     {
       'index': 41,
-      'id': '50',
+      'id': '0050',
       'name': '轰龙',
       'japaneseName': 'ティガレックス',
       'longest': '3FA00000',
@@ -371,7 +371,7 @@ const monster = {
     },
     {
       'index': 42,
-      'id': '38',
+      'id': '0038',
       'name': '角龙',
       'japaneseName': 'ディアブロス',
       'longest': '3FA00000',
@@ -380,7 +380,7 @@ const monster = {
     },
     {
       'index': 43,
-      'id': 'A4',
+      'id': '00A4',
       'name': '妃蜘蛛',
       'japaneseName': 'ヤツカダキ',
       'longest': '3FA00000',
@@ -389,7 +389,7 @@ const monster = {
     },
     {
       'index': 44,
-      'id': '',
+      'id': '0188',
       'name': '炽妃蜘蛛',
       'japaneseName': 'ヤツカダキ亜種',
       'longest': '3FA00000',
@@ -398,7 +398,7 @@ const monster = {
     },
     {
       'index': 45,
-      'id': '44',
+      'id': '0044',
       'name': '钢龙',
       'japaneseName': 'クシャルダオラ',
       'longest': '3FA00000',
@@ -407,7 +407,7 @@ const monster = {
     },
     {
       'index': 46,
-      'id': '48',
+      'id': '0048',
       'name': '霞龙',
       'japaneseName': 'オオナズチ',
       'longest': '3FA00000',
@@ -416,7 +416,7 @@ const monster = {
     },
     {
       'index': 47,
-      'id': '4C',
+      'id': '004C',
       'name': '炎王龙',
       'japaneseName': 'テオ・テスカトル',
       'longest': '3FA00000',
@@ -425,7 +425,7 @@ const monster = {
     },
     {
       'index': 48,
-      'id': '',
+      'id': '0194',
       'name': '爵银龙',
       'japaneseName': 'メル・ゼナ',
       'longest': '3F9851EC',
@@ -434,7 +434,7 @@ const monster = {
     },
     {
       'index': 49,
-      'id': '',
+      'id': '016C',
       'name': '天廻龙',
       'japaneseName': 'シャガルマガラ',
       'longest': '3F9851EC',
@@ -443,7 +443,7 @@ const monster = {
     },
     {
       'index': 50,
-      'id': '40',
+      'id': '0040',
       'name': '金狮子',
       'japaneseName': 'ラージャン',
       'longest': '3FA00000',
@@ -452,7 +452,7 @@ const monster = {
     },
     {
       'index': 51,
-      'id': '',
+      'id': '0160',
       'name': '激昂金狮子',
       'japaneseName': '激昂したラージャン',
       'longest': '3FA00000',
@@ -461,7 +461,7 @@ const monster = {
     },
     {
       'index': 52,
-      'id': 'D4',
+      'id': '00D4',
       'name': '爆鳞龙',
       'japaneseName': 'バゼルギウス',
       'longest': '3FA00000',
@@ -470,28 +470,28 @@ const monster = {
     },
     {
       'index': 53,
-      'id': 'AC',
+      'id': '00AC',
       'name': '风神龙',
       'japaneseName': 'イブシマキヒコ',
       'type': 'Elder Dragon'
     },
     {
       'index': 54,
-      'id': 'B8',
+      'id': '00B8',
       'name': '雷神龙',
       'japaneseName': 'ナルハタタヒメ',
       'type': 'Elder Dragon'
     },
     {
       'index': 55,
-      'id': 'BC',
+      'id': '00BC',
       'name': '百龙渊源雷神龙',
       'japaneseName': '百竜ノ淵源ナルハタタヒメ',
       'type': 'Elder Dragon'
     },
     {
       'index': 56,
-      'id': '8C',
+      'id': '008C',
       'name': '神秘红光天彗龙',
       'japaneseName': '奇しき赫耀のバルファルク',
       'longest': '3FA00000',
@@ -500,14 +500,14 @@ const monster = {
     },
     {
       'index': 57,
-      'id': '',
+      'id': '01A0',
       'name': '冥渊龙',
       'japaneseName': 'ガイアデルム',
       'type': 'Elder Dragon'
     },
     {
       'index': 58,
-      'id': '78',
+      'id': '0078',
       'name': '霸主·青熊兽',
       'japaneseName': 'ヌシ・アオアシラ',
       'longest': '3F87AE14',
@@ -516,7 +516,7 @@ const monster = {
     },
     {
       'index': 59,
-      'id': '24',
+      'id': '0024',
       'name': '霸主·雌火龙',
       'japaneseName': 'ヌシ・リオレイア',
       'longest': '3F947AE1',
@@ -525,7 +525,7 @@ const monster = {
     },
     {
       'index': 60,
-      'id': '88',
+      'id': '0088',
       'name': '霸主·泡狐龙',
       'japaneseName': 'ヌシ・タマミツネ',
       'longest': '3FA00000',
@@ -534,7 +534,7 @@ const monster = {
     },
     {
       'index': 61,
-      'id': '2C',
+      'id': '002C',
       'name': '霸主·火龙',
       'japaneseName': 'ヌシ・リオレウス',
       'longest': '3FA00000',
@@ -543,7 +543,7 @@ const monster = {
     },
     {
       'index': 62,
-      'id': '3C',
+      'id': '003C',
       'name': '霸主·角龙',
       'japaneseName': 'ヌシ・ディアブロス',
       'longest': '3FA00000',
@@ -552,7 +552,7 @@ const monster = {
     },
     {
       'index': 63,
-      'id': '6C',
+      'id': '006C',
       'name': '霸主·雷狼龙',
       'japaneseName': 'ヌシ・ジンオウガ',
       'longest': '3FA00000',
@@ -563,6 +563,7 @@ const monster = {
   type: {
     hunted: '0128',
     captured: '0140',
+    anomaly: '0130',
     longest: '0148',
     shortest: '0150'
   }

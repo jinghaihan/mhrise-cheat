@@ -26,7 +26,7 @@
                               :precision="0"
                               :min="0"
                               :max="9999"
-                              style="width: 35%"
+                              style="width: 40%"
                               allowClear>
               </a-input-number>
               <a-input-number placeholder="捕获数"
@@ -35,10 +35,22 @@
                               :min="0"
                               :max="9999"
                               :disabled="data.data.type === 'Apex' || data.data.type === 'Elder Dragon'"
-                              style="width: 35%"
+                              style="width: 40%"
                               allowClear>
               </a-input-number>
             </a-input-group>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="怪异讨伐数">
+            <a-input-number placeholder="怪异讨伐数"
+                            v-model="params.anomaly"
+                            :precision="0"
+                            :min="0"
+                            :max="9999"
+                            style="width: 80%"
+                            allowClear>
+            </a-input-number>
           </a-form-item>
         </a-col>
         <a-col :span="24">
@@ -77,6 +89,7 @@ export default {
       params: {
         hunted: undefined,
         captured: undefined,
+        anomaly: undefined,
         longest: undefined,
         shortest: undefined
       },
