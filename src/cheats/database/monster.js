@@ -595,8 +595,8 @@ const monster = {
     hunted: '0128',
     captured: '0140',
     anomaly: '0130',
-    longest: '0148',
-    shortest: '0150'
+    shortest: '0148',
+    longest: '0150'
   }
 }
 
