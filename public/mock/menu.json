@@ -41,7 +41,7 @@
         "children": []
       },
       {
-        "title": "武器使用频度",
+        "title": "武器使用次数",
         "icon": "bar-chart",
         "target": "usage",
         "activeRule": "/mhrise-cheat/",
