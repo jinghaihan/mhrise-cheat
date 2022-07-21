@@ -7,9 +7,9 @@ export default function generateCheat (params) {
   
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${pointer.awards[version]}`,
-    `580F1000 00000070`,
-    `580F1000 00000158`,
+    `580F0000 ${pointer.awards[version].single[0]}`,
+    `580F1000 000000${pointer.awards[version].single[1]}`,
+    `580F1000 0000${pointer.awards[version].single[2]}`,
     `780F0000 000001${data.group}`,
     `610F0000 00000000 000000${data.id}`
   ])

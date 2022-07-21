@@ -119,7 +119,6 @@ export default {
         })
         this.checkbox[award.group + '-' + award.id] = false
       })
-      console.log(this.data)
       this.$nextTick(() => {
         this.calculateImageWidth()
       })
