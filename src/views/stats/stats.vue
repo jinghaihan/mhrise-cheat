@@ -98,7 +98,7 @@
           </a-col>
           <a-col :span="12">
             <a-form-item label="获赞次数">
-              <a-input-number :disabled="true" style="width: 100%" :min="0" :max="9999" v-model="params.praise" placeholder="获赞次数"></a-input-number>
+              <a-input-number style="width: 100%" :min="0" :max="9999" v-model="params.praise" placeholder="获赞次数"></a-input-number>
             </a-form-item>
           </a-col>
           <a-col :span="12">

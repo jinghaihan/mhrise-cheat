@@ -108,9 +108,9 @@ function generateRecordCheat (version, hunted, captured) {
 function generatePraiseCheat (version, count) {
   let title
   let template = generateCheatTemplate([
-    `580F0000 ${pointer.stats[version]}`,
-    `580F1000 00000070`,
-    `780F0000 00000048`,
+    `580F0000 ${pointer.stats[version].praise[0]}`,
+    `580F1000 000000${pointer.stats[version].praise[1]}`,
+    `780F0000 000000${pointer.stats[version].praise[2]}`,
     `640F0000 00000000 0000${generateCount(count)}`
   ])
 
