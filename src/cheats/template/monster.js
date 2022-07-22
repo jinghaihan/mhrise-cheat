@@ -4,7 +4,7 @@ import { generateCount, generateCheatTemplate } from '@/cheats/utils/index.js'
 import { setCheat } from '@/cheats/utils/store.js'
 
 export default function generateCheat (params) {
-  let { version, id, hunted, captured, anomaly, longest, shortest, titled } = params
+  let { version, id, hunted, captured, anomaly, longest, shortest, titled, size, target } = params
   
   let template = ``
   // 狩猎数
@@ -26,6 +26,9 @@ export default function generateCheat (params) {
   // 最小金冠
   if (shortest) {
     template += generateCrownCheat(version, id, 'shortest', titled)
+  }
+  if (size || target) {
+    generateTargetSizeCheat(version, size, target)
   }
 
   return template
@@ -80,6 +83,24 @@ function generateCrownCheat (version, id, type, titled) {
     title = `${monsterName}_${typeName}`
     setCheat({ version, title, value: template })
   }
+
+  return template
+}
+
+function generateTargetSizeCheat (version, size, target) {
+  let title
+  let template = generateCheatTemplate([
+    `580F0000 ${pointer.monster[version].target[0]}`,
+    `580F1000 000000${pointer.monster[version].target[1]}`,
+    `580F1000 000000${pointer.monster[version].target[2]}`,
+    `580F1000 000000${monster.target[target]}`,
+    `580F1000 0000${pointer.monster[version].target[3]}`,
+    `780F0000 000000${pointer.monster[version].target[4]}`,
+    `640F0000 00000000 ${monster.size[size]}`
+  ])
+
+  title = `怪物体型_${target}_${size}倍`
+  setCheat({ version, title, value: template })
 
   return template
 }

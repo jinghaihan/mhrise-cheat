@@ -589,6 +589,60 @@ const monster = {
       'longest': '3FA00000',
       'shortest': '3F6147AE',
       'type': 'Apex'
+    },
+    {
+      'index': 64,
+      'id': '0150',
+      'name': '未实装',
+      'japaneseName': '',
+      'longest': '',
+      'shortest': '',
+      'type': ''
+    },
+    {
+      'index': 65,
+      'id': '0154',
+      'name': '未实装',
+      'japaneseName': '',
+      'longest': '',
+      'shortest': '',
+      'type': ''
+    },
+    {
+      'index': 66,
+      'id': '0164',
+      'name': '未实装',
+      'japaneseName': '',
+      'longest': '',
+      'shortest': '',
+      'type': ''
+    },
+    {
+      'index': 67,
+      'id': '0178',
+      'name': '未实装',
+      'japaneseName': '',
+      'longest': '',
+      'shortest': '',
+      'type': ''
+    },
+    {
+      'index': 68,
+      'id': '0190',
+      'name': '未实装',
+      'japaneseName': '',
+      'longest': '',
+      'shortest': '',
+      'type': ''
+    },
+    {
+      'index': 69,
+      'id': '01A8',
+      'name': '未实装',
+      'japaneseName': '',
+      'longest': '',
+      'shortest': '',
+      'type': ''
     }
   ],
   type: {
@@ -597,6 +651,16 @@ const monster = {
     anomaly: '0130',
     shortest: '0148',
     longest: '0150'
+  },
+  target: ['20', '28', '30'],
+  size: {
+    '0.88': '3F6147AE',
+    '0.9': '3F666666',
+    '0.95': '3F733333',
+    '1.0': '3F800000',
+    '1.16': '3F947AE1',
+    '1.19': '3F9851EB',
+    '1.25': '3FA00000'
   }
 }
 

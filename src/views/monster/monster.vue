@@ -44,6 +44,7 @@
           </a-col>
           <a-col :xl="12" :lg="8" :sm="24" :style="{ textAlign: 'right' }">
             <a-form-item class="button">
+              <a-button icon="crown" @click="onTarget">目标体型</a-button>
               <a-button icon="crown" type="primary" @click="onCrown">全金冠</a-button>
               <a-button icon="shopping-cart" @click="onCart" :disabled="!data.length">加入购物车</a-button>
               <a-button icon="rest" type="danger" @click="onClear" :disabled="!data.length">清空全部</a-button>
@@ -89,8 +90,12 @@
                  :version="versionOptions"
                  @submit="onCrownSubmit"
                  @close="onModalClose">
-
     </crown-modal>
+    <target-modal v-if="mapVisible"
+               :visible="mapVisible"
+               :version="versionOptions"
+               @submit="onTargetSubmit"
+               @close="onModalClose"></target-modal>
   </div>
 </template>
 
@@ -101,6 +106,7 @@ import generateCheat from '@/cheats/template/monster.js'
 import { downloadCheat } from '@/cheats/utils/download.js'
 import editModal from './editModal.vue'
 import crownModal from './crownModal.vue'
+import targetModal from './targetModal.vue'
 
 export default {
   name: 'monster',
@@ -110,7 +116,8 @@ export default {
       render: (h, ctx) => ctx.props.vnodes
     },
     editModal,
-    crownModal
+    crownModal,
+    targetModal
   },
   data () {
     return {
@@ -124,6 +131,7 @@ export default {
       selectAll: false,
       editVisible: false,
       crownVisible: false,
+      mapVisible: false,
       currentData: {}
     }
   },
@@ -240,6 +248,14 @@ export default {
     onCrown () {
       this.crownVisible = true
     },
+    onTarget () {
+      this.mapVisible = true
+    },
+    onTargetSubmit (data) {
+      generateCheat({ ...data })
+
+      this.onModalClose()
+    },
     async onCrownSubmit (data) {
       let countOfGroup = 5
       // 拆分分组
@@ -314,6 +330,7 @@ export default {
       this.currentData = {}
       this.editVisible = false
       this.crownVisible = false
+      this.mapVisible = false
     },
     filterOption (input, option) {
       return (
